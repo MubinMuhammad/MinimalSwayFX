@@ -1,0 +1,15 @@
+colors:
+  primary:
+    background: '0x1e2122'
+
+shell:
+  # comment this line if you don't want to use fish
+  program: /bin/fish
+
+font:
+  normal:
+    family: caskaydiacove nf
+  size: 12
+
+window:
+  opacity: 0.85
