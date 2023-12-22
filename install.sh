@@ -21,7 +21,6 @@ function write_config() {
 
 write_config sway
 write_config mako
-write_config rofi 
-write_config waybar
+write_config i3status
 write_config alacritty
 write_config wallpapers

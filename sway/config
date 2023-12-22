@@ -5,7 +5,7 @@ set $down  j
 set $up    k
 set $right l
 set $term  alacritty
-set $menu  exec $HOME/.config/rofi/launchers/type-1/launcher.sh | xargs swaymsg exec --
+set $menu  exec bemenu-run --fn="CaskaydiaCove NF" -i -c -W 0.3 --cw 1 -l 10 -p "Run: " -B 1 --fixed-height | xargs swaymsg exec --
 
 # setting the wallpaper
 output * bg $HOME/.config/wallpapers/10.jpg fill
@@ -68,6 +68,9 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+r mode "resize"
 
+bindsym $mod+o exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym $mod+p exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+
 mode "resize" {
     bindsym $left resize shrink width 20px
     bindsym $down resize grow height 20px
@@ -84,24 +87,33 @@ mode "resize" {
 }
 
 bar {
-    swaybar_command waybar
+  swaybar_command swaybar
+
+  status_command i3status
+  position top
+  font pango:CaskaydiaCove NF Bold 12
+
+  colors {
+    statusline #c5c8c6
+    background #1d1f21
+
+    focused_workspace #8abeb7 #81a2be #1d1f21
+  }
 }
 
 # startup executions
-exec pipewire
-exec pipewire-pulse
-exec wireplumber
+# nothing
 
 default_border pixel 1
 default_floating_border pixel 1
 
 # border colors
-client.focused          #ebdbb2 #ebdbb2 #282828 #ebdbb2   #ebdbb2
-client.focused_inactive #c5c8c6 #ebdbb2 #ebdbb2 #ebdbb2   #ebdbb2
-client.unfocused        #282828 #ebdbb2 #282828 #282828   #282828
+client.focused          #928374 #928374 #504945 #928374   #928374
+client.focused_inactive #c5c8c6 #928374 #928374 #928374   #928374
+client.unfocused        #504945 #928374 #504945 #504945   #504945
 client.urgent           #fabd2f #fabd2f #fabd2f #fabd2f   #fabd2f
 client.placeholder      #b8bb26 #b8bb26 #b8bb26 #b8bb26   #b8bb26
-client.background       #ebdbb2
+client.background       #928374
 
 # swayfx config
 blur enable

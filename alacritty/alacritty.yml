@@ -1,6 +1,5 @@
-colors:
-  primary:
-    background: '0x1e2122'
+import:
+  - ~/.config/alacritty/themes/tomorrow_night.yaml
 
 shell:
   # comment this line if you don't want to use fish
@@ -8,8 +7,8 @@ shell:
 
 font:
   normal:
-    family: caskaydiacove nf
+    family: Caskaydiacove nf
   size: 12
 
-window:
-  opacity: 0.85
+# window:
+#   opacity: 0.85
