@@ -5,7 +5,7 @@ set $down  j
 set $up    k
 set $right l
 set $term  alacritty
-set $menu  exec bemenu-run --fn="CaskaydiaCove NF" -i -c -W 0.3 --cw 1 -l 10 -p "Run: " -B 1 --fixed-height | xargs swaymsg exec --
+set $menu  exec bemenu-run --fn="Iosevka NF" -i -c -W 0.3 --cw 1 -l 10 -p "Run: " -B 1 --fixed-height --bdr "#3f3f3f" --sf "#5f5f5f" --tf "#9f9f9f" --hf "#fefefe" -R 5 | xargs swaymsg exec --
 
 # setting the wallpaper
 output * bg $HOME/.config/wallpapers/10.jpg fill
@@ -89,9 +89,9 @@ mode "resize" {
 bar {
   swaybar_command swaybar
 
-  status_command i3status
+  status_command /usr/local/bin/i3status
   position top
-  font pango:CaskaydiaCove NF Bold 12
+  font pango:Iosevka NF Bold 12
 
   colors {
     statusline #c5c8c6
@@ -116,13 +116,13 @@ client.placeholder      #b8bb26 #b8bb26 #b8bb26 #b8bb26   #b8bb26
 client.background       #928374
 
 # swayfx config
-blur enable
-blur_xray enable
-blur_passes 2
-blur_radius 10
-corner_radius 4
-default_dim_inactive 0.1
-shadows enable
+# blur enable
+# blur_xray enable
+# blur_passes 2
+# blur_radius 10
+# corner_radius 4
+# default_dim_inactive 0.1
+# shadows enable
 
 # window gaps
 gaps inner 4
