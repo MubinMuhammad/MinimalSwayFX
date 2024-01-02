@@ -6,9 +6,9 @@ It's a minimal config so you might add new features on top of it. If you like, t
 request for your config too.
 
 ## Screenshots
-| Idle                          | Coding                            |
-| ----------------------------- | --------------------------------- |
-| ![Idle](screenshots/Idle.jpg) | ![coding](screenshots/Coding.jpg) |
+| Idle                          |
+| ----------------------------- |
+| ![Idle](screenshots/Idle.jpg) |
 
 ## Configuration Details
 This configuration has a status bar at the top (Waybar), a menu to open up apps(Tofi). It uses the 
@@ -21,15 +21,12 @@ The programs that are used to this configuration:
 - [Alacritty](https://github.com/alacritty/alacritty) for the terminal. 
   The themes are from [Alacritty-Theme](https://github.com/alacritty/alacritty-theme)
 - [Mako](https://github.com/emersion/mako), as the notification daemon.
-- [Tofi](https://github.com/philj56/tofi), as the application launcher.
-- [Waybar](https://github.com/Alexays/Waybar), as the status bar.
-- Wallpapers, got some dark forest and sunny forest wallpapers from [Pexels](https://www.pexels.com).
+- [Bemenu](https://github.com/Cloudef/bemenu), as the application launcher.
+- Swaybar & [i3status](https://github.com/i3/i3status), as the status bar.
+- Wallpapers, got some dark forest and sunny forest wallpapers from [Pexels](https://www.pexels.com) & [Unsplash](https://unsplash.com/).
 
 If your curios what tools are used to create the "Coding Screenshot", they are as follows
 neovim with [NvChad](https://github.com/NvChad/NvChad), Htop and the man page of sway(5).
-
-## Installation
-Run the `install.sh` file. If you have already some configuration. They will be saved as `config_name.bak` as a folder.
 
 ## Contribution
 If you want to contribute to the project, add a star to it. And if you want to change something

@@ -1,5 +1,5 @@
 # variables
-set $mod   Mod4
+set $mod   Mod4 
 set $left  h
 set $down  j
 set $up    k
@@ -8,7 +8,7 @@ set $term  alacritty
 set $menu  exec bemenu-run --fn="Iosevka NF" -i -c -W 0.3 --cw 1 -l 10 -p "Run: " -B 1 --fixed-height --bdr "#3f3f3f" --sf "#5f5f5f" --tf "#9f9f9f" --hf "#fefefe" -R 5 | xargs swaymsg exec --
 
 # setting the wallpaper
-output * bg $HOME/.config/wallpapers/10.jpg fill
+output * bg $HOME/.config/wallpapers/11.jpg fill
 
 # common bindings
 bindsym $mod+Return exec $term
@@ -91,11 +91,12 @@ bar {
 
   status_command /usr/local/bin/i3status
   position top
+  gaps 4
   font pango:Iosevka NF Bold 12
 
   colors {
     statusline #c5c8c6
-    background #1d1f21
+    background #050505
 
     focused_workspace #8abeb7 #81a2be #1d1f21
   }
@@ -104,29 +105,21 @@ bar {
 # startup executions
 # nothing
 
-default_border pixel 1
-default_floating_border pixel 1
-
-# border colors
-client.focused          #928374 #928374 #504945 #928374   #928374
-client.focused_inactive #c5c8c6 #928374 #928374 #928374   #928374
-client.unfocused        #504945 #928374 #504945 #504945   #504945
-client.urgent           #fabd2f #fabd2f #fabd2f #fabd2f   #fabd2f
-client.placeholder      #b8bb26 #b8bb26 #b8bb26 #b8bb26   #b8bb26
-client.background       #928374
+default_border pixel 0
+default_floating_border pixel 0
 
 # swayfx config
-# blur enable
-# blur_xray enable
-# blur_passes 2
-# blur_radius 10
+blur enable
+blur_xray enable
+blur_passes 2
+blur_radius 10
 # corner_radius 4
 # default_dim_inactive 0.1
 # shadows enable
 
 # window gaps
-gaps inner 4
-gaps outer 4
+gaps inner 2
+gaps outer 2
 
 # includes
 include /etc/sway/config.d/*

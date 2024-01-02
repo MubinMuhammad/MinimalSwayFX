@@ -1,5 +1,18 @@
-import:
-  - ~/.config/alacritty/themes/tomorrow_night.yaml
+colors:
+  # Default colors
+  primary:
+    # hard contrast: background
+    background: '0x050505'
+  # Normal colors
+  normal:
+    black:   '0x171717'
+    red:     '0x5e4a49'
+    green:   '0x323d36'
+    yellow:  '0x57553c'
+    blue:    '0x3c4d57'
+    magenta: '0x453b54'
+    cyan:    '0x3b6366'
+    white:   '0x8d9696'
 
 shell:
   # comment this line if you don't want to use fish
@@ -7,8 +20,11 @@ shell:
 
 font:
   normal:
-    family: Caskaydiacove nf
-  size: 12
+    family: Iosevka nf
+  size: 14
 
-# window:
-#   opacity: 0.85
+window:
+  padding:
+    x: 10
+    y: 10
+  opacity: 0.8
