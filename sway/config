@@ -122,7 +122,7 @@ client.background       #928374
 # blur_passes 2
 # blur_radius 10
 # corner_radius 4
-default_dim_inactive 0.2
+# default_dim_inactive 0.2
 # shadows enable
 
 # window gaps
