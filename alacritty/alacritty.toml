@@ -1,0 +1,29 @@
+[colors.normal]
+black   = "0x050505"
+blue    = "0x828fad"
+cyan    = "0x82acad"
+green   = "0x93ad82"
+magenta = "0x9782ad"
+red     = "0xad9082"
+white   = "0xadadad"
+yellow  = "0xada282"
+
+[colors.primary]
+background = "0x050505"
+
+[font]
+size = 14
+
+[font.normal]
+family = "terminess nerd font"
+style  = "bold"
+
+[shell]
+program = "/bin/fish"
+
+# [window]
+# opacity = 0.75
+
+[window.padding]
+x = 20
+y = 20

@@ -6,48 +6,44 @@
 # ß
 # If the above line is not correctly displayed, fix your editor first!
 
+# The colors are from the Tomorrow Night Theme.
+
 general {
-        colors = true
-        interval = 5
+  colors = true 
+  
+  color_good = "#82ad84"
+  color_bad = "#ad9082"
+  color_degraded = "#ad8c82"
+
+  interval = 5
 }
 
-order += "ipv6"
 order += "wireless _first_"
 order += "ethernet _first_"
+order += "volume master"
 order += "battery all"
-order += "disk /"
-order += "load"
-order += "memory"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+  format_up = " W: Up "
+  format_down = " W: Down "
 }
 
 ethernet _first_ {
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+  format_up = " E: Up "
+  format_down = " E: Down "
+}
+
+volume master {
+  format = " Volume: %volume "
 }
 
 battery all {
-        format = "%status %percentage %remaining"
-}
-
-disk "/" {
-        format = "%avail"
-}
-
-load {
-        format = "%1min"
-}
-
-memory {
-        format = "%used | %available"
-        threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
+  format = " %status %percentage "
+  format_down = " No Battery "
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+  format = " %Y-%m-%d %H:%M:%S "
 }
+
