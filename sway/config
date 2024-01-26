@@ -123,10 +123,6 @@ client.background       #928374
 # default_dim_inactive 0.2
 # shadows enable
 
-input 2522:49418:A4Tech_USB_Mouse {
-  accel_profile flat
-}
-
 # window gaps
 gaps inner 4
 gaps outer 4
