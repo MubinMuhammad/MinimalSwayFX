@@ -5,7 +5,7 @@ set $down  j
 set $up    k 
 set $right l 
 set $term  alacritty
-set $menu  exec bemenu-run --fn="Iosevka NF" -i -c -W 0.3 --cw 1 -l 10 -p "Run: " --fixed-height --sf "#5f5f5f" --tf "#9f9f9f" --hf "#fefefe" | xargs swaymsg exec --
+set $menu  exec tofi-drun | xargs swaymsg exec --
 
 # setting the wallpaper
 output * bg $HOME/.config/wallpapers/12.jpg fill
@@ -15,7 +15,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit sway' 'swaymsg exit' --font="CaskaydiaCove NF"
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit sway' 'swaymsg exit' --font="terminess Nerd Font Bold"
 
 floating_modifier $mod normal
 
@@ -68,9 +68,6 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+r mode "resize"
 
-bindsym $mod+o exec pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym $mod+p exec pactl set-sink-volume @DEFAULT_SINK@ +2%
-
 mode "resize" {
     bindsym $left resize shrink width 20px
     bindsym $down resize grow height 20px
@@ -89,10 +86,10 @@ mode "resize" {
 bar {
   swaybar_command swaybar
 
-  status_command /usr/local/bin/i3status
+  status_command /usr/bin/i3status-rs $HOME/.config/i3status/config.toml
   gaps 8
   position top
-  font pango:Terminess Nerd Font Bold 12
+  font pango:Iosevka NF Bold 12
 
   colors {
     statusline #c5c8c6
@@ -105,8 +102,8 @@ bar {
 # startup executions
 # nothing
 
-default_border pixel 1
-default_floating_border pixel 1
+default_border pixel 2
+default_floating_border pixel 2
 
 # border colors
 client.focused          #454545 #454545 #504945 #454545   #454545
@@ -121,10 +118,14 @@ client.background       #928374
 # blur_xray enable
 # blur_passes 2
 # blur_radius 10
-# layer_effects "panel" shadows enable;
-# corner_radius 4
+# layer_effects "panel" shadows enable, corner_radius 6;
+# corner_radius 6
 # default_dim_inactive 0.2
 # shadows enable
+
+input 2522:49418:A4Tech_USB_Mouse {
+  accel_profile flat
+}
 
 # window gaps
 gaps inner 4

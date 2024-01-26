@@ -1,5 +1,4 @@
 # MinimalSwayFX
-
 Minimal configuration for [swayFX](https://github.com/WillPower3309/swayfx), a great tiling wayland window manager.
 It's made so people don't waste there time creating there own configs. That may take hours.
 It's a minimal config so you might add new features on top of it. If you like, than you shall add a pull 
@@ -21,7 +20,7 @@ The programs that are used to this configuration:
 - [Alacritty](https://github.com/alacritty/alacritty) for the terminal. 
   The themes are from [Alacritty-Theme](https://github.com/alacritty/alacritty-theme)
 - [Mako](https://github.com/emersion/mako), as the notification daemon.
-- [Bemenu](https://github.com/Cloudef/bemenu), as the application launcher.
+- [Tofi](https://github.com/philj56/tofi), as the application launcher. Also, has given the gruvchad theme from NvChad.
 - Swaybar & [i3status](https://github.com/i3/i3status), as the status bar.
 - Wallpapers, got some dark forest and sunny forest wallpapers from [Pexels](https://www.pexels.com) & [Unsplash](https://unsplash.com/).
 

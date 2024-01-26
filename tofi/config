@@ -1,0 +1,18 @@
+history=false
+
+font=Iosevka NF 
+font-size = 12
+
+background-color=#050505
+
+outline-width = 0
+
+border-width = 2
+border-color = #454545
+
+text-color = #c3b499
+selection-color = #ec6b64
+prompt-text = "exec: "
+
+width = 40%
+height = 70%

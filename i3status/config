@@ -40,7 +40,7 @@ volume master {
 
 battery all {
   format = " %status %percentage "
-  format_down = " No Battery "
+  format_down = " No BAT "
 }
 
 tztime local {
