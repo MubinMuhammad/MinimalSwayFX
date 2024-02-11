@@ -1,8 +1,7 @@
-font=caskaydiacove nf
+font=Iosevka nf
 
-background-color=#222222
-padding=10
+background-color=#050505
+padding=5
 
 border-size=1
-border-color=#c5c8c6
-border-radius=6
+border-color=#454545

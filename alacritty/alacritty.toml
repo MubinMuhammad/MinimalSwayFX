@@ -12,17 +12,17 @@ yellow  = "0xada282"
 background = "0x050505"
 
 [font]
-size = 14
+size = 12
 
 [font.normal]
-family = "terminess nerd font"
-style  = "bold"
+family = "Iosevka NF"
+style = "Bold"
 
 [shell]
 program = "/bin/fish"
 
-# [window]
-# opacity = 0.75
+[window]
+opacity = 0.8
 
 [window.padding]
 x = 20

@@ -8,7 +8,7 @@ set $term  alacritty
 set $menu  exec tofi-drun | xargs swaymsg exec --
 
 # setting the wallpaper
-output * bg $HOME/.config/wallpapers/12.jpg fill
+# output * bg $HOME/.config/wallpapers/12.jpg fill
 
 # common bindings
 bindsym $mod+Return exec $term
@@ -87,9 +87,9 @@ bar {
   swaybar_command swaybar
 
   status_command /usr/bin/i3status-rs $HOME/.config/i3status/config.toml
-  gaps 8
-  position top
-  font pango:Iosevka NF Bold 12
+  gaps 8 128
+  position bottom
+  font pango:FiraCode Nerd Font Bold 10
 
   colors {
     statusline #c5c8c6
@@ -100,7 +100,7 @@ bar {
 }
 
 # startup executions
-# nothing
+exec swww init
 
 default_border pixel 2
 default_floating_border pixel 2
@@ -118,10 +118,14 @@ client.background       #928374
 # blur_xray enable
 # blur_passes 2
 # blur_radius 10
-# layer_effects "panel" shadows enable, corner_radius 6;
-# corner_radius 6
+# layer_effects "panel" corner_radius 8;
+# corner_radius 8
 # default_dim_inactive 0.2
 # shadows enable
+
+input 2522:49418:A4Tech_USB_Mouse {
+  accel_profile flat
+}
 
 # window gaps
 gaps inner 4
