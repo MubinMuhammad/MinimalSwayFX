@@ -7,7 +7,7 @@ request for your config too.
 ## Screenshots
 | Idle                          |
 | ----------------------------- |
-| ![Idle](screenshots/Idle.jpg) |
+| ![Idle](screenshots/Idle2.jpg) |
 
 ## Configuration Details
 This configuration has a status bar at the top (Waybar), a menu to open up apps(Tofi). It uses the 
@@ -23,6 +23,7 @@ The programs that are used to this configuration:
 - [Tofi](https://github.com/philj56/tofi), as the application launcher. Also, has given the gruvchad theme from NvChad.
 - Swaybar & [i3status](https://github.com/i3/i3status), as the status bar.
 - Wallpapers, got some dark forest and sunny forest wallpapers from [Pexels](https://www.pexels.com) & [Unsplash](https://unsplash.com/).
+- [SWWW](https://github.com/LGFae/swww) is used to change the wallpaper. The script for it is in ~/.config/i3status/wallpaperSet.sh. And activate by the artix logo on the panel.
 
 If your curios what tools are used to create the "Coding Screenshot", they are as follows
 neovim with [NvChad](https://github.com/NvChad/NvChad), Htop and the man page of sway(5).
