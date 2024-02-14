@@ -116,16 +116,12 @@ client.background       #928374
 # swayfx config
 # blur enable
 # blur_xray enable
-# blur_passes 2
+# blur_passes 3
 # blur_radius 10
 # layer_effects "panel" corner_radius 8;
 # corner_radius 8
 # default_dim_inactive 0.2
 # shadows enable
-
-input 2522:49418:A4Tech_USB_Mouse {
-  accel_profile flat
-}
 
 # window gaps
 gaps inner 4
