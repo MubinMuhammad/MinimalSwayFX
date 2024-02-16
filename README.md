@@ -5,9 +5,9 @@ It's a minimal config so you might add new features on top of it. If you like, t
 request for your config too.
 
 ## Screenshots
-| Idle                          |
+| Showcase                      |
 | ----------------------------- |
-| ![Idle](screenshots/Idle2.jpg) |
+| ![Idle](screenshots/Idle.jpg) |
 
 ## Configuration Details
 This configuration has a status bar at the top (Waybar), a menu to open up apps(Tofi). It uses the 

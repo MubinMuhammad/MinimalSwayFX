@@ -7,8 +7,11 @@ set $right l
 set $term  alacritty
 set $menu  exec tofi-drun | xargs swaymsg exec --
 
-# setting the wallpaper
-# output * bg $HOME/.config/wallpapers/12.jpg fill
+# setting the solid.
+output * bg #334955 solid_color
+
+# use this if you are into wallpapers.
+# output * bg $HOME/.config/wallpapers/<number>.jpg fill
 
 # common bindings
 bindsym $mod+Return exec $term
@@ -84,44 +87,49 @@ mode "resize" {
 }
 
 bar {
-  swaybar_command swaybar
+  swaybar_command waybar
 
-  status_command /usr/bin/i3status-rs $HOME/.config/i3status/config.toml
-  gaps 8 128
-  position bottom
-  font pango:FiraCode Nerd Font Bold 10
-
-  colors {
-    statusline #c5c8c6
-    background #050505
-
-    focused_workspace #8abeb7 #81a2be #1d1f21
-  }
+  # swaybar_command swaybar
+  #
+  # status_command /usr/bin/i3status-rs $HOME/.config/i3status/config.toml
+  # position top
+  # font pango:CaskaydiaCove NF 12
+  #
+  # gaps 8
+  #
+  # colors {
+  #   background #050505
+  #
+  #   focused_workspace #8abeb7 #81a2be #1d1f21
+  # }
 }
 
-# startup executions
-exec swww init
+# # startup executions
+# exec swww init
 
 default_border pixel 2
 default_floating_border pixel 2
 
 # border colors
-client.focused          #454545 #454545 #504945 #454545   #454545
-client.focused_inactive #c5c8c6 #454545 #454545 #454545   #454545
-client.unfocused        #504945 #454545 #504945 #504945   #504945
-client.urgent           #fabd2f #fabd2f #fabd2f #fabd2f   #fabd2f
-client.placeholder      #b8bb26 #b8bb26 #b8bb26 #b8bb26   #b8bb26
-client.background       #928374
+client.focused          #505050 #505050 #505050 #505050 #505050
+client.focused_inactive #303030 #303030 #303030 #303030 #303030
+client.unfocused        #303030 #303030 #303030 #303030 #303030
+client.urgent           #ffb380 #ffb380 #ffb380 #ffb380 #ffb380
+client.placeholder      #a7d16b #a7d16b #a7d16b #a7d16b #a7d16b
 
 # swayfx config
 # blur enable
 # blur_xray enable
-# blur_passes 3
+# blur_passes 2
 # blur_radius 10
-# layer_effects "panel" corner_radius 8;
+# layer_effects "panel" corner_radius 8; shadows enable;
 # corner_radius 8
 # default_dim_inactive 0.2
 # shadows enable
+
+input 2522:49418:A4Tech_USB_Mouse {
+  accel_profile flat
+}
 
 # window gaps
 gaps inner 4

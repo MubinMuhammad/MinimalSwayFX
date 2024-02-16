@@ -1,28 +1,29 @@
 [colors.normal]
 black   = "0x050505"
-blue    = "0x828fad"
-cyan    = "0x82acad"
-green   = "0x93ad82"
-magenta = "0x9782ad"
-red     = "0xad9082"
-white   = "0xadadad"
-yellow  = "0xada282"
+blue    = "0x0077b6"
+cyan    = "0x219ebc"
+green   = "0x97a97c"
+magenta = "0x9fa0ff"
+red     = "0xd08c60"
+white   = "0xe6ccb2"
+yellow  = "0xffcb70"
 
 [colors.primary]
 background = "0x050505"
+foreground = "0xe6ccb2"
 
 [font]
 size = 12
 
 [font.normal]
-family = "Iosevka NF"
+family = "Lilex Nerd Font"
 style = "Bold"
 
 [shell]
 program = "/bin/fish"
 
-[window]
-opacity = 0.8
+# [window]
+# opacity = 0.85
 
 [window.padding]
 x = 20

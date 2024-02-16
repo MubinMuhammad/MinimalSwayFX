@@ -11,7 +11,7 @@ M.ui = {
   theme_toggle = { "ashes", "one_light" },
   transparency = true,
   statusline = {
-    theme = "minimal",
+    theme = "vscode_colored",
   },
 
   hl_override = highlights.override,
