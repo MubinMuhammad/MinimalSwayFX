@@ -25,9 +25,6 @@ The programs that are used to this configuration:
 - Wallpapers, got some dark forest and sunny forest wallpapers from [Pexels](https://www.pexels.com) & [Unsplash](https://unsplash.com/).
 - [SWWW](https://github.com/LGFae/swww) is used to change the wallpaper. The script for it is in ~/.config/i3status/wallpaperSet.sh. And activate by the artix logo on the panel.
 
-If your curios what tools are used to create the "Coding Screenshot", they are as follows
-neovim with [NvChad](https://github.com/NvChad/NvChad), Htop and the man page of sway(5).
-
 ## Contribution
 If you want to contribute to the project, add a star to it. And if you want to change something
 project just go ahead and create a pull request. If your request is praiseworthy, I will merge it.
