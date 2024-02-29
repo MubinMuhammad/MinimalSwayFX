@@ -30,9 +30,8 @@ swww
 
 ## Configuration Details
 This configuration has a status bar at the top (Waybar), a menu to open up apps(Tofi). It uses the 
-[Nerd Font](https://www.nerdfonts.com/) versions of [Cascadia Code](https://github.com/microsoft/cascadia-code) 
-for the terminal & UI. The main theme used here is the Tomorrow Night version of 
-[Tomorrow Theme](https://github.com/chriskempson/tomorrow-theme) color scheme.
+[Nerd Font](https://www.nerdfonts.com/) versions of [Iosevka](https://github.com/be5invis/Iosevka) 
+for the terminal & UI. The main theme used here is the Tomorrow Night version of [GruvChad](https://github.com/NvChad/base46/blob/v2.0/lua/base46/themes/gruvchad.lua) color scheme.
 
 The programs that are used to this configuration:
 - SwayFX, as the core window manager.
@@ -45,6 +44,4 @@ The programs that are used to this configuration:
 - [SWWW](https://github.com/LGFae/swww) is used to change the wallpaper. The script for it is in ~/.config/i3status/wallpaperSet.sh. And activate by the artix logo on the panel.
 
 ## Contribution
-If you want to contribute to the project, add a star to it. And if you want to change something
-project just go ahead and create a pull request. If your request is praiseworthy, I will merge it.
-Thanks to everybody who is using this!
+If you want to contribute to the project, add a star to it. And if you want to change something project just go ahead and create a pull request. If your request is praiseworthy, I will merge it. Thanks to everybody who is using this!
