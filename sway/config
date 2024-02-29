@@ -8,17 +8,17 @@ set $term  alacritty
 set $menu  exec tofi-drun | xargs swaymsg exec --
 
 # setting the solid.
-output * bg #334955 solid_color
+# output * bg #151515 solid_color
 
 # use this if you are into wallpapers.
-# output * bg $HOME/.config/wallpapers/<number>.jpg fill
+output * bg $HOME/.config/wallpapers/13.jpg fill
 
 # common bindings
 bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit sway' 'swaymsg exit' --font="terminess Nerd Font Bold"
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit sway' 'swaymsg exit' --font="Iosevka Nerd Font"
 
 floating_modifier $mod normal
 
@@ -87,24 +87,24 @@ mode "resize" {
 }
 
 bar {
-  swaybar_command waybar
+  # swaybar_command waybar
 
-  # swaybar_command swaybar
-  #
-  # status_command /usr/bin/i3status-rs $HOME/.config/i3status/config.toml
-  # position top
-  # font pango:CaskaydiaCove NF 12
-  #
-  # gaps 8
-  #
-  # colors {
-  #   background #050505
-  #
-  #   focused_workspace #8abeb7 #81a2be #1d1f21
-  # }
+  swaybar_command swaybar
+
+  status_command /usr/bin/i3status-rs $HOME/.config/i3status/config.toml
+  position top
+  font pango:Iosevka Nerd Font 12
+
+  gaps 8
+
+  colors {
+    background #050505
+
+    focused_workspace #97a97c #87986a #050505
+  }
 }
 
-# # startup executions
+# startup executions
 # exec swww init
 
 default_border pixel 2

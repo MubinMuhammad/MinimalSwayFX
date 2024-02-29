@@ -4,6 +4,9 @@ icons_format = "{icon}"
 theme = "plain"
 [theme.overrides]
 separator = ""
+idle_bg = "#050505"
+idle_fg = "#e8dab2"
+good_bg = { link = "idle_bg" }
 
 [icons]
 icons = "material-nf"
@@ -23,6 +26,6 @@ format = " $timestamp.datetime(f:'%a %d/%m %R') "
 block = "custom"
 command ='echo " "'
 interval = "once"
-[[block.click]]
-button = "left"
-cmd = "$HOME/.config/i3status/wallpaperSet.sh &"
+# [[block.click]]
+# button = "left"
+# cmd = "$HOME/.config/i3status/wallpaperSet.sh &"

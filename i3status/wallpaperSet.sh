@@ -1,4 +1,4 @@
-n=`shuf -i 1-16 -n 1`
+n=`shuf -i 1-17 -n 1`
 
 swww img ~/.config/wallpapers/$n.jpg \
   --transition-angle 225             \

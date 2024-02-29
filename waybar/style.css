@@ -2,7 +2,7 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: Lilex nerd font;
+  font-family: Iosevka nerd font;
   font-weight: bold;
   font-size: 14px;
 }
@@ -10,7 +10,6 @@
 window#waybar {
 	background: #050505;
   border: 2px solid #505050;
-  border-radius: 8px;
 }
 
 #workspaces {
@@ -22,7 +21,6 @@ window#waybar {
   min-width: 0; /* Fix weird spacing in materia (waybar #450) */
   box-shadow: inset 0 -3px transparent; /* Use box-shadow instead of border so the text isn't offset */
   padding: 6px 12px;
-  border-radius: 4px;
   color: #6c757d;
 }
 
@@ -84,6 +82,5 @@ tooltip {
   padding: 15px;
   background-color: #050505;
   border: 1px solid #505050;
-  border-radius: 8px;
 }
 

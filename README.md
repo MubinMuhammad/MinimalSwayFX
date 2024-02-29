@@ -9,6 +9,24 @@ request for your config too.
 | ----------------------------- |
 | ![Idle](screenshots/Idle.jpg) |
 
+## Dependencies
+The current repo depends on these programs. So, if you want everything to just work, install these:
+```
+sway (or swayfx),
+swaybg,
+swayidle,
+swaylock,
+swayimg,
+alacritty,
+fish,
+i3status-rust,
+neofetch,
+mako,
+nvim,
+tofi,
+waybar
+```
+
 ## Configuration Details
 This configuration has a status bar at the top (Waybar), a menu to open up apps(Tofi). It uses the 
 [Nerd Font](https://www.nerdfonts.com/) versions of [Cascadia Code](https://github.com/microsoft/cascadia-code) 

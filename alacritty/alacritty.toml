@@ -16,8 +16,7 @@ foreground = "0xe6ccb2"
 size = 12
 
 [font.normal]
-family = "Lilex Nerd Font"
-style = "Bold"
+family = "Iosevka Nerd Font"
 
 [shell]
 program = "/bin/fish"
