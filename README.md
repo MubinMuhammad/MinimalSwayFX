@@ -24,7 +24,8 @@ neofetch,
 mako,
 nvim,
 tofi,
-waybar
+waybar,
+swww
 ```
 
 ## Configuration Details
