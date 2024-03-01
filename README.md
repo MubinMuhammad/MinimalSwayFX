@@ -25,6 +25,7 @@ mako,
 nvim,
 tofi,
 waybar,
+eza,
 swww
 ```
 
