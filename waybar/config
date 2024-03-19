@@ -1,10 +1,10 @@
 {
 //    "layer": "top",
-    "position": "top",
+    "position": "bottom",
     "spacing": 0,
-    "margin-top": 8,
-    "margin-left": 8,
-    "margin-right": 8,
+    "margin-bottom": 8,
+    "margin-left": 300,
+    "margin-right": 300,
 
     "modules-left": [
         "sway/workspaces"
@@ -19,13 +19,13 @@
         "network",
         "battery",
         "pulseaudio",
+        "custom/swww"
     ],
 
-    "wlr/taskbar": {
+    "sway/taskbar": {
         "format": "{icon}",
         "on-click": "activate",
         "on-click-right": "fullscreen",
-        "icon-theme": "WhiteSur",
         "icon-size": 25,
         "tooltip-format": "{title}"
     },
@@ -78,6 +78,11 @@
             "default": ["","" ," "]
         },
         "on-click": "pamixer -t",
+    },
+
+    "custom/swww": {
+      "format": "󰣇 ",
+      "on-click": "bash ~/.config/wallpapers/wallpaperSet.sh"
     },
 
     "battery": {

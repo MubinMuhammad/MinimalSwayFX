@@ -7,7 +7,7 @@ local highlights = require "custom.highlights"
 M.plugins = "custom.plugins"
 
 M.ui = {
-  theme = "gruvchad", -- right here 
+  theme = "tomorrow_night", -- right here 
   theme_toggle = { "ashes", "one_light" },
   transparency = true,
   statusline = {

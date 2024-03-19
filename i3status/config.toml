@@ -19,13 +19,5 @@ cmd = "pavucontrol"
 
 [[block]]
 block = "time"
-interval = 5
-format = " $timestamp.datetime(f:'%a %d/%m %R') "
-
-[[block]]
-block = "custom"
-command ='echo " "'
-interval = "once"
-# [[block.click]]
-# button = "left"
-# cmd = "$HOME/.config/i3status/wallpaperSet.sh &"
+interval = 60
+format = " $icon $timestamp.datetime(f:'%I:%M') "

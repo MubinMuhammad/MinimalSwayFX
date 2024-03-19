@@ -5,9 +5,9 @@ It's a minimal config so you might add new features on top of it. If you like, t
 request for your config too.
 
 ## Screenshots
-| Showcase                      |
-| ----------------------------- |
-| ![Idle](screenshots/Idle.jpg) |
+| Showcase                       |
+| -----------------------------  |
+| ![Idle](screenshots/Idle2.png) |
 
 ## Dependencies
 The current repo depends on these programs. So, if you want everything to just work, install these:

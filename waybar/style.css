@@ -5,11 +5,13 @@
   font-family: Iosevka nerd font;
   font-weight: bold;
   font-size: 14px;
+  padding: 0;
 }
 
 window#waybar {
-	background: #050505;
-  border: 2px solid #505050;
+	background: rgba(29, 31, 33, 0.75);
+  border-radius: 6px;
+  border: 2px solid #303030;
 }
 
 #workspaces {
@@ -42,14 +44,16 @@ window#waybar {
 #backlight,
 #network,
 #clock,
-#tray {
-  padding-right: 24px;
+#tray,
+#pulseaudio {
+  margin: 8px;
+  padding-right: 16px;
   background-color: transparent;
   color: #ede0d4;
 }
 
-#pulseaudio {
-  padding-right: 18px;
+#custom-swww {
+  padding-right: 16px;
   background-color: transparent;
   color: #ede0d4;
 }
@@ -81,6 +85,6 @@ window#waybar {
 tooltip {
   padding: 15px;
   background-color: #050505;
-  border: 1px solid #505050;
+  border-radius: 6px;
+  border: 2px solid #303030;
 }
-

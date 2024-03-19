@@ -7,11 +7,13 @@ set $right l
 set $term  alacritty
 set $menu  exec tofi-drun | xargs swaymsg exec --
 
+font pango:Iosevka Nerd Font 12
+
 # setting the solid.
 # output * bg #151515 solid_color
 
 # use this if you are into wallpapers.
-output * bg $HOME/.config/wallpapers/13.jpg fill
+# output * bg $HOME/.config/wallpapers/13.jpg fill
 
 # common bindings
 bindsym $mod+Return exec $term
@@ -87,45 +89,42 @@ mode "resize" {
 }
 
 bar {
-  # swaybar_command waybar
+  swaybar_command waybar
 
-  swaybar_command swaybar
-
-  status_command /usr/bin/i3status-rs $HOME/.config/i3status/config.toml
-  position top
-  font pango:Iosevka Nerd Font 12
-
-  gaps 8
-
-  colors {
-    background #050505
-
-    focused_workspace #97a97c #87986a #050505
-  }
+  # swaybar_command swaybar
+  #
+  # status_command /usr/bin/i3status-rs $HOME/.config/i3status/config.toml
+  # position top
+  # font pango:CaskaydiaCove Nerd Font 12
+  #
+  # colors {
+  #   background #050505
+  #
+  #   focused_workspace #97a97c #87986a #050505
+  # }
 }
 
 # startup executions
-# exec swww init
+exec swww init
 
 default_border pixel 2
 default_floating_border pixel 2
 
-# border colors
-client.focused          #505050 #505050 #505050 #505050 #505050
-client.focused_inactive #303030 #303030 #303030 #303030 #303030
-client.unfocused        #303030 #303030 #303030 #303030 #303030
-client.urgent           #ffb380 #ffb380 #ffb380 #ffb380 #ffb380
-client.placeholder      #a7d16b #a7d16b #a7d16b #a7d16b #a7d16b
+# class                 border    backgr.  text     indicator  child_border
+client.focused          #373b41   #373b41  #373b41  #373b41    #373b41
+client.focused_inactive #282a2e   #282a2e  #282a2e  #282a2e    #282a2e
+client.urgent           #f0c674   #f0c674  #f0c674  #f0c674    #f0c674
+client.placeholder      #373b41   #373b41  #373b41  #373b41    #373b41
 
 # swayfx config
-# blur enable
-# blur_xray enable
-# blur_passes 2
-# blur_radius 10
-# layer_effects "panel" corner_radius 8; shadows enable;
-# corner_radius 8
+blur enable
+blur_xray enable
+blur_passes 3
+blur_radius 5
+layer_effects "waybar" shadows enable; blur enable;
+corner_radius 4
 # default_dim_inactive 0.2
-# shadows enable
+shadows enable
 
 input 2522:49418:A4Tech_USB_Mouse {
   accel_profile flat
