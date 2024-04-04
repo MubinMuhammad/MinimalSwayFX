@@ -1,13 +1,13 @@
 font=Iosevka Nerd Font Medium
 font-size = 12
 
-background-color=#050505
+background-color=#1d2021
 corner-radius=6
 
 outline-width = 0
 
 border-width = 2
-border-color = #303030
+border-color = #202020
 
 text-color = #ede0d4
 selection-color = #97a97c

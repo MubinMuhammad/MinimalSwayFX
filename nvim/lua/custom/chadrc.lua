@@ -7,14 +7,18 @@ local highlights = require "custom.highlights"
 M.plugins = "custom.plugins"
 
 M.ui = {
-  theme = "tomorrow_night", -- right here 
-  theme_toggle = { "ashes", "one_light" },
+  theme = "gruvchad", -- right here 
+  theme_toggle = { "gruvchad", "one_light" },
   transparency = true,
   statusline = {
     theme = "vscode_colored",
   },
 
-  hl_override = highlights.override,
+  hl_override = {
+    -- CursorLine = {
+    --   bg = "#282828"
+    -- }
+  },
   hl_add = highlights.add,
 }
 

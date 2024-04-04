@@ -6,7 +6,8 @@ local lspconfig = require "lspconfig"
 -- if you just want default config for the servers then put them in a table
 local servers = { 
   "html", "cssls", "tsserver", 
-  "pylsp", "zls" 
+  "pylsp", "zls", "gopls",
+  "cmake"
 }
 
 for _, lsp in ipairs(servers) do
@@ -15,11 +16,6 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities
   }
 end
-
-lspconfig.rust_analyzer.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
 
 lspconfig.clangd.setup {
   on_attach = on_attach,

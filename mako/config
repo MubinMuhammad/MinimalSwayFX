@@ -1,7 +1,8 @@
-font=Iosevka nf
+font=Iosevka nerd font
 
-background-color=#050505
-padding=5
+background-color=#1d1f21
+padding=8
 
-border-size=1
-border-color=#454545
+border-size=2
+border-radius=6
+border-color=#373b41

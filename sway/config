@@ -10,10 +10,10 @@ set $menu  exec tofi-drun | xargs swaymsg exec --
 font pango:Iosevka Nerd Font 12
 
 # setting the solid.
-output * bg #969896 solid_color
+# output * bg #969896 solid_color
 
 # use this if you are into wallpapers.
-# output * bg $HOME/.config/wallpapers/13.jpg fill
+output * bg $HOME/.config/sway/wallpaper.jpg fill
 
 # common bindings
 bindsym $mod+Return exec $term
@@ -111,20 +111,25 @@ default_border pixel 2
 default_floating_border pixel 2
 
 # class                 border    backgr.  text     indicator  child_border
-client.focused          #373b41   #373b41  #373b41  #373b41    #373b41
-client.focused_inactive #282a2e   #282a2e  #282a2e  #282a2e    #282a2e
-client.urgent           #f0c674   #f0c674  #f0c674  #f0c674    #f0c674
-client.placeholder      #373b41   #373b41  #373b41  #373b41    #373b41
+client.focused          #282828   #969896  #969896  #282828    #282828
+client.focused_inactive #373b41   #969896  #969896  #282a2e    #282a2e
+client.unfocused        #373b41   #969896  #969896  #282a2e    #282a2e
+client.urgent           #373b41   #900000  #ffffff  #282a2e    #900000
+client.placeholder      #373b41   #373b41  #ffffff  #282a2e    #969896
 
 # swayfx config
-# blur enable
+blur enable
 # blur_xray enable
-# blur_passes 3
-# blur_radius 5
-# layer_effects "waybar" shadows enable; blur enable;
-# corner_radius 4
+blur_passes 3
+blur_radius 5
+layer_effects "waybar" blur enable;
+corner_radius 6
 # default_dim_inactive 0.2
-# shadows enable
+shadows enable
+
+input 2522:49418:A4Tech_USB_Mouse {
+  accel_profile flat
+}
 
 # window gaps
 gaps inner 4
