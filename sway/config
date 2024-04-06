@@ -10,10 +10,10 @@ set $menu  exec tofi-drun | xargs swaymsg exec --
 font pango:Iosevka Nerd Font 12
 
 # setting the solid.
-# output * bg #969896 solid_color
+output * bg #a89984 solid_color
 
 # use this if you are into wallpapers.
-output * bg $HOME/.config/sway/wallpaper.jpg fill
+# output * bg $HOME/.config/sway/<your_wallpaper>.jpg fill
 
 # common bindings
 bindsym $mod+Return exec $term
@@ -122,7 +122,7 @@ blur enable
 # blur_xray enable
 blur_passes 3
 blur_radius 5
-layer_effects "waybar" blur enable;
+layer_effects "waybar" blur enable; shadows enable
 corner_radius 6
 # default_dim_inactive 0.2
 shadows enable
