@@ -26,7 +26,9 @@ nvim,
 tofi,
 waybar,
 eza,
-swww
+swww,
+
+[font] CaskaydiaCove Nerd Font
 ```
 
 ## Configuration Details
