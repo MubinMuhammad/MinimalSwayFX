@@ -154,3 +154,5 @@ function fish_prompt
 end
 
 alias ls="eza -l"
+alias vim="nvim"
+alias vi="nvim"

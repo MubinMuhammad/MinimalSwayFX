@@ -32,12 +32,13 @@ size = 12
 
 [font.normal]
 family = "CaskaydiaCove Nerd Font"
+style = "bold"
 
 [shell]
 program = "/bin/fish"
 
-[window]
-opacity = 0.8
+# [window]
+# opacity = 0.8
 
 [window.padding]
 x = 20

@@ -22,32 +22,10 @@
         "custom/swww"
     ],
 
-    "sway/taskbar": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "on-click-right": "fullscreen",
-        "icon-size": 25,
-        "tooltip-format": "{title}"
-    },
-
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-        },
-        "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-        }
+        "format": "-",
     },
 
     "tray": {
@@ -59,65 +37,28 @@
     },
     
     "network": {
-        "format-wifi" : "{icon}",
-        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-        "format-ethernet": "",
-        "format-disconnected" : "󰤮",
+        "format-wifi" : "W {bandwidthDownBits}",
+        "format-ethernet": "E {bandwidthDownBits}",
+        "format-disconnected" : "D {bandwidthDownBits}",
 	      "interval": 5,
     },
 
     "pulseaudio": {
         "scroll-step": 5,
         "max-volume": 150,
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "󰂰",
+        "format": "VOL {volume}%",
+        "format-bluetooth": "BLU",
         "nospacing": 1,
-        "format-muted": "󰝟",
-        "format-icons": {
-            "headphone": "",
-            "default": ["","" ," "]
-        },
-        "on-click": "pamixer -t",
-    },
-
-    "custom/swww": {
-      "format": "󰣇 ",
-      "on-click": "bash ~/.config/wallpapers/wallpaperSet.sh"
+        "format-muted": "MUT",
+        "on-click": "pavucontrol",
     },
 
     "battery": {
-        "format": "{icon} {capacity}%",
-        "format-icons": {
-            "charging": [
-                "󰢜",
-                "󰂆",
-                "󰂇",
-                "󰂈",
-                "󰢝",
-                "󰂉",
-                "󰢞",
-                "󰂊",
-                "󰂋",
-                "󰂅"
-            ],
-            "default": [
-                "󰁺",
-                "󰁻",
-                "󰁼",
-                "󰁽",
-                "󰁾",
-                "󰁿",
-                "󰂀",
-                "󰂁",
-                "󰂂",
-                "󰁹"
-            ]
-        },
-        "format-full": "Charged ",
+        "format": "bat {capacity}%",
         "interval": 5,
         "states": {
-            "warning": 20,
-            "critical": 10
+            "warning": 15,
+            "critical": 5
         },
         "tooltip": false
     },
