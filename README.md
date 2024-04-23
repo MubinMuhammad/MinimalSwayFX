@@ -11,24 +11,24 @@ request for your config too.
 
 ## Dependencies
 The current repo depends on these programs. So, if you want everything to just work, install these:
-```
-sway (or swayfx),
-swaybg,
-swayidle,
-swaylock,
-swayimg,
-alacritty,
-fish,
-waybar,
-i3status-rust (if you don't intend to use waybar),
-neofetch,
-mako,
-nvim,
-tofi,
-eza,
 
-[font] CaskaydiaCove Nerd Font
-```
+| Program      | Description                                             |
+|--------------|---------------------------------------------------------|
+|sway(swayfx)  |the window manager (use swayfx if you want cool effects).|
+|swaybg        |used by sway, to set wallpaper.                          |
+|swayidle      |to set system to sleep (TODO, not implemented).          |
+|swaylock      |use by sway, to add a lockscreen (TODO, not_implemented).|
+|swayimg       |not necessary, you can view an image with this.          |
+|alacritty     |the terminal used in this rice.                          |
+|fish          |the shell used in this rice.                             |
+|waybar        |the status bar used in this rice.                        |
+|i3status-rust |alternative status bar if not using waybar.              |
+|neofetch      |not necessary, used to make the rice look better.        |
+|mako          |the notification manager for sway.                       |
+|nvim          |my text editor (doesn't have to be yours)                |
+|tofi          |the application launcher used in this rice.              |
+|eza           |the improved version of "ls" command.                    |
+|Cascadia Cove |the nerd version is used in this rice.                   |
 
 ## Configuration Details
 This configuration has a status bar at the top (Waybar), a menu to open up apps(Tofi). It uses the 
