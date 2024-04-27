@@ -1,0 +1,18 @@
+{
+  "start": {
+    "prefix": "start",
+    "body": [
+      "#include <bits/stdc++.h>",
+      "using namespace std;\n",
+
+      "int main(int argc, char *argv[]) {",
+        "\tios_base::sync_with_stdio(0);",
+        "\tcin.tie(0);",
+        "\t$1\n",
+
+        "return 0;",
+      "}"
+    ],
+    "description": "Snippet for problem solving!"
+  }
+}
