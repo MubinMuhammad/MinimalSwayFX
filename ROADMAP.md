@@ -3,10 +3,10 @@ Here's the current roadmap for the installer of MinimalSwayFX:
 - Ask questions
     - Both (Sway/SwayFX)
         - wallpaper or solid background?
-        - bar type?
-        - bar position?
         - window gap?
         - window border?
+        - bar type?
+        - bar position?
     - SwayFX
         - blur?
         - shadow?

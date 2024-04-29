@@ -1,10 +1,7 @@
 {
   "layer": "top",
-  "position": "bottom",
   "spacing": 0,
-  "margin-bottom": 8,
-  "margin-left": 8,
-  "margin-right": 8,
+  "height": 0,
 
   "modules-left": [
     "sway/workspaces"
@@ -55,8 +52,8 @@
     "format": "bat {capacity}%",
     "interval": 5,
     "states": {
-        "warning": 20,
-        "critical": 10
+      "warning": 20,
+      "critical": 10
     },
     "tooltip": false
   }
