@@ -9,3 +9,7 @@ all: compile
 
 run: compile
 	./$(EXE)
+
+clean:
+	rm -fr ./$(EXE)
+

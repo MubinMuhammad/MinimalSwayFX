@@ -8,8 +8,8 @@ Here's the current roadmap for the installer of MinimalSwayFX:
         - bar type?
         - bar position?
     - SwayFX
+        - transparency?
         - blur?
         - shadow?
         - corner_radius?
         - in-active dim?
-        - transparency?

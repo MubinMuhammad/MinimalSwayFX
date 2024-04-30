@@ -2,13 +2,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <dirent.h>
-#include <errno.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "texts.h"
 #include "colors.h"
+#include "../../config.h"
 
 /*
  * the config pattern I followed in this code:
@@ -24,99 +22,89 @@
 #define ERROR(e, msg) \
   do { \
     if (e) { \
-      fprintf(stderr, "\033[0;31m[error]\033[0m: %s", msg); \
+      fprintf(stderr, "[\033[0;31merror\033[0m]: %s", msg); \
+      exit(1); \
     } \
   } while (0)
 
-void print_section_line(char ch, int length) {
-  for (int i = 0; i < length; i++) {
-    printf("-");
+
+/**/
+char folder_exist(const char *path) {
+  struct stat st;
+  if (stat(path, &st) == 0 && S_ISDIR(st.st_mode)) {
+    return 1;
   }
-  printf("\n");
+
+  return 0;
 }
 
-void print_stage(const char *header, const char *desc,
-                 const char *options) {
-  int header_len = strlen(header);
-
-  system("clear");
-  printf("%s\n", header);
-  print_section_line('-', header_len);
-
-  if (options != NULL)
-    printf("%s", options);
-  if (desc != NULL)
-    printf("%s", desc);
-}
-
-void print_error_stage(const char *msg) {
-  system("clear");
-  printf(
-    "\033[0;31mError\033[0;0m\n"
-    "-----\n"
-    "You have provided invalid input.\n"
-    "The input range is from %s", msg
-  );
-
-  for (int i = 3; i >= 1; i--) {
-    fflush(stdout);
-    printf("\rGoing back in %d.", i);
-    sleep(1);
+char folder_create(const char *path) {
+  if (mkdir(path, 0777) == -1) {
+    return 1;
   }
+
+  return 0;
 }
 
-void create_folder(const char *path) {
-  DIR *d = opendir(path);
-
-  if (ENOENT == errno) {
-    mkdir(path, S_IRWXU | S_IRWXG | S_IRWXO);
-  }
-}
-
-char is_color_hex(const char *hex, int hex_size) {
-  if (hex_size > 6 || hex[0] != '#')
+char is_color_hex(const char *hex) {
+  if (strlen(hex) > 7 || hex[0] != '#')
     return 0;
 
   return 1;
 }
 
-int main() {
-  unsigned int input_state = 0;
-  char input_char;
-  char input_str[128];
+int main(int argc, char *argv[]) {
   char *HOME = getenv("HOME");
-  char tmp_dir[32];
+  char config_dir[32];
+  char sway_dir[64];
+  char crnt_config[64];
+  char bak_dir[64];
 
-  print_stage(before_header, before_desc, NULL);
-  scanf(" %c", &input_char);
+  snprintf(config_dir, 32, "%s/.config", HOME);
+  snprintf(sway_dir, 64, "%s/.config/sway", HOME);
+  snprintf(bak_dir, 64, "%s/.config/sway_bak", HOME);
 
-  if (input_char != 'y' && input_char != 'Y') {
-    printf("Goodbye!\n");
-    goto end;
+  if (!folder_exist(config_dir)) {
+    folder_create(config_dir);
   }
 
-  sprintf(tmp_dir, "%s/%s", HOME, ".config");
-  create_folder(tmp_dir);
-
-  print_stage(sway_ques_header, NULL, sway_ques_options);
-  scanf(" %c", &input_char);
-
-  if (input_char != 'a' && input_char != 'b')
-    print_error_stage("\'a\' to \'b\'.");
-  else
-    input_state |= (input_char - 'a') << 0;
-
+  if (!folder_exist(sway_dir)) {
+    folder_create(sway_dir);
+  }
+  else {
+    ERROR(
+      rename(sway_dir, bak_dir), 
+      "Failed to move old config to new dir!\n"
+    );
+    folder_create(sway_dir);
+  }
+  
   FILE *reader_fp = NULL;
   FILE *writer_fp = NULL;
   char line_buffer[128];
-  char line_set[1024];
 
   reader_fp = fopen("./src/sway/config", "r");
-  fgets(line_buffer, sizeof(line_buffer), reader_fp);
+
+  snprintf(crnt_config, 64, "%s/config", sway_dir);
+  writer_fp = fopen(crnt_config, "w");
+
+  for (int i = 0; i < 2; i++) {
+    fgets(line_buffer, 128, reader_fp);
+    fputs(line_buffer, writer_fp);
+  }
+
+  snprintf(
+    line_buffer,
+    128,
+    "output * bg %s %s",
+    WALLPAPER,
+    is_color_hex(WALLPAPER) ? "solid_color" : "fill"
+  );
+
+  fputs(line_buffer, writer_fp);
 
   fclose(reader_fp);
   fclose(writer_fp);
 
-  end:
   return 0;
 }
