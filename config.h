@@ -3,8 +3,8 @@
  * #ifndef, #include, #endif.
  *
  * Just focus on changing #define lines,
- * exeption to this line is `#define _CONFIG_H_`
- * make sure to not change this line.
+ * exeption to this rule is `#define _CONFIG_H_`
+ * make sure to not change that line.
  * */
 
 #ifndef _CONFIG_H_
@@ -22,10 +22,18 @@
 #define WINDOW_MANAGER SWAYFX
 
 /*
+ * this is going to be the theme that is going to be
+ * applied through out the system.
+ *
+ * Available options: GRUVBOX_MATERIAL_DARK (more comming soon...)
+ * */
+#define WINDOW_MANAGER_THEME GRUVBOX_MATERIAL_DARK
+
+/*
  * The wallpaper can be the path
  * to a wallpaper or a #RRGGBB hex format
  * for solid colors. Make sure to put
- * "" around the your choice.
+ * "" around your choice.
  * */
 #define WALLPAPER "#1d2021"
 
@@ -52,7 +60,7 @@
  *
  * Available options: WAYBAR, I3_STATUS
  * */
-#define BAR_TYPE WAYBAR
+#define BAR_TYPE I3_STATUS
 
 /*
  * This will determine the bar placement.

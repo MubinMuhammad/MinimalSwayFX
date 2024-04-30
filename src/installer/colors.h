@@ -1,20 +1,11 @@
 #ifndef _COLORS_H_
 #define _COLORS_H_
 
-/*
- * the config pattern I followed in this code:
- * 1. sway (or swayfx)
- * 2. waybar (or i3status-rs)
- * 3. tofi
- * 4. mako
- * 5. alacritty
- * 6. fish
- * 7. neofetch
- * */
+// Internal code, Don't Edit
 
 enum {
   COLOR_BG,
-  COLOR_BG1, // brighter background (for borders)
+  COLOR_BG1, // brighter/darker background (for borders)
   COLOR_FG,
   COLOR_RED,
   COLOR_RED1,
@@ -36,7 +27,7 @@ enum {
  * greater than 61 decrease the l by
  * 5 otherwise increase it by 5.
  * */
-const char *gruvbox_material_dark_colors[] = {
+const char *GRUVBOX_MATERIAL_DARK[] = {
   "#1d2021",
   "#292d2e",
   "#ddc7a1",

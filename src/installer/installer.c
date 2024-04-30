@@ -8,6 +8,8 @@
 #include "colors.h"
 #include "../../config.h"
 
+// Internal code, Don't Edit
+
 /*
  * the config pattern I followed in this code:
  * 1. sway (or swayfx)
@@ -25,6 +27,12 @@
       fprintf(stderr, "[\033[0;31merror\033[0m]: %s", msg); \
       exit(1); \
     } \
+  } while (0)
+
+#define WRITE_TO_FILE(buffer, file_ptr, format, ...) \
+  do { \
+    snprintf(buffer, sizeof(buffer), format, __VA_ARGS__); \
+    fputs(buffer, file_ptr); \
   } while (0)
 
 
@@ -51,6 +59,19 @@ char is_color_hex(const char *hex) {
     return 0;
 
   return 1;
+}
+
+int enum_to_val(int unit_enum, int low, int mid, int high) {
+  if (unit_enum == NONE)
+    return 0;
+  if (unit_enum == LOW || unit_enum == THIN)
+    return low;
+  if (unit_enum == MEDIUM)
+    return mid;
+  if (unit_enum == HIGH || unit_enum == THICK)
+    return high;
+
+  return 0;
 }
 
 int main(int argc, char *argv[]) {
@@ -81,7 +102,7 @@ int main(int argc, char *argv[]) {
   
   FILE *reader_fp = NULL;
   FILE *writer_fp = NULL;
-  char line_buffer[128];
+  char line_buffer[512];
 
   reader_fp = fopen("./src/sway/config", "r");
 
@@ -93,15 +114,65 @@ int main(int argc, char *argv[]) {
     fputs(line_buffer, writer_fp);
   }
 
-  snprintf(
-    line_buffer,
-    128,
-    "output * bg %s %s",
-    WALLPAPER,
+  WRITE_TO_FILE(
+    line_buffer, 
+    writer_fp, 
+    "output * bg %s %s\n\n",
+    WALLPAPER, 
     is_color_hex(WALLPAPER) ? "solid_color" : "fill"
   );
 
-  fputs(line_buffer, writer_fp);
+  int window_gap = enum_to_val(WINDOW_GAP, 4, 8, 12);
+  WRITE_TO_FILE(
+    line_buffer, 
+    writer_fp, 
+    "gaps inner %d\n"
+    "gaps outer %d\n\n",
+    window_gap, window_gap
+  );
+
+  int window_border = enum_to_val(WINDOW_BORDER, 1, 2, 4);
+  WRITE_TO_FILE(
+    line_buffer, 
+    writer_fp, 
+    "default_border pixel %d\n"
+    "default_floating_border pixel %d\n\n",
+    window_border, window_border
+  );
+
+  if (BAR_TYPE == WAYBAR) {
+    WRITE_TO_FILE(
+      line_buffer, 
+      writer_fp, 
+      "exec waybar "
+      "-c $HOME/.config/sway/waybar_config "
+      "-s $HOME/.config/sway/waybar_style.css\n\n",
+      NULL
+    );
+  }
+  else if (BAR_TYPE == I3_STATUS) {
+    WRITE_TO_FILE(
+      line_buffer, 
+      writer_fp, 
+      "bar {\n"
+      "  swaybar_command swaybar\n"
+      "  status_command /usr/bin/i3status-rs $HOME/.config/sway/i3status_config.toml\n"
+      "  position %s\n"
+      "  gaps %d\n"
+      "  font pango:CaskaydiaCove Nerd Font Bold 12\n"
+      "  colors {\n"
+      "    background %s\n"
+      "    focused_workspace %s %s %s\n"
+      "  }\n"
+      "}\n\n",
+      BAR_POSITION == BOTTOM ? "bottom" : "top",
+      window_gap * 2,
+      WINDOW_MANAGER_THEME[COLOR_BG],
+      WINDOW_MANAGER_THEME[COLOR_YELLOW1],
+      WINDOW_MANAGER_THEME[COLOR_YELLOW],
+      WINDOW_MANAGER_THEME[COLOR_BG]
+    );
+  }
 
   fclose(reader_fp);
   fclose(writer_fp);
