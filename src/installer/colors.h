@@ -3,10 +3,16 @@
 
 // Internal code, Don't Edit
 
+#define TOTAL_COLORS 16
+
 enum {
-  COLOR_BG,
-  COLOR_BG1, // brighter/darker background (for borders)
+  COLOR_BG = 0,
+  COLOR_BG1, // darker background (for inactive borders)
+  COLOR_BG2, // shades of gray
+  COLOR_BG3,
+  COLOR_BG4,
   COLOR_FG,
+  COLOR_FG1,
   COLOR_RED,
   COLOR_RED1,
   COLOR_ORANGE,
@@ -29,8 +35,12 @@ enum {
  * */
 const char *GRUVBOX_MATERIAL_DARK[] = {
   "#1d2021",
+  "#111213",
   "#292d2e",
+  "#353a3b",
+  "#4d5456",
   "#ddc7a1",
+  "#a89984",
   "#ea6962",
   "#e7534b",
   "#e78a4e",

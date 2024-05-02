@@ -32,29 +32,32 @@
   },
   
   "network": {
-    "format-wifi" : "W {bandwidthDownBits}",
-    "format-ethernet": "E {bandwidthDownBits}",
-    "format-disconnected" : "D {bandwidthDownBits}",
+    "format-wifi" : "󰤢 {bandwidthDownBits}",
+    "format-ethernet": "󰤢 {bandwidthDownBits}",
+    "format-disconnected" : "󰤠 No Network",
     "interval": 5
   },
 
   "pulseaudio": {
     "scroll-step": 5,
     "max-volume": 150,
-    "format": "VOL {volume}%",
-    "format-bluetooth": "BLU",
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-icons": ["", "", " "],
     "nospacing": 1,
-    "format-muted": "MUT",
+    "format-muted": " ",
     "on-click": "pavucontrol"
   },
 
   "battery": {
-    "format": "bat {capacity}%",
+    "format": "{icon} {capacity}%",
     "interval": 5,
     "states": {
       "warning": 20,
       "critical": 10
     },
+
+    "format-icons": ["", "", "", "", ""],
     "tooltip": false
   }
 }

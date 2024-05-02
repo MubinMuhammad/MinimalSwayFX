@@ -14,7 +14,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit sway' 'swaymsg exit' --font="CaskaydiaCove Nerd Font"
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit Sway' 'swaymsg exit' --font="CaskaydiaCove Nerd Font"
 floating_modifier $mod normal
 
 # more bindings

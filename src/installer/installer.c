@@ -35,6 +35,10 @@
     fputs(buffer, file_ptr); \
   } while (0)
 
+#define ENUM_TO_VAL(unit_enum, low, mid, high) \
+  (unit_enum == LOW || unit_enum == THIN ? low : \
+  (unit_enum == MEDIUM ? mid : \
+  (unit_enum == HIGH || unit_enum == THICK ? high : 0)))
 
 /**/
 char folder_exist(const char *path) {
@@ -59,19 +63,6 @@ char is_color_hex(const char *hex) {
     return 0;
 
   return 1;
-}
-
-int enum_to_val(int unit_enum, int low, int mid, int high) {
-  if (unit_enum == NONE)
-    return 0;
-  if (unit_enum == LOW || unit_enum == THIN)
-    return low;
-  if (unit_enum == MEDIUM)
-    return mid;
-  if (unit_enum == HIGH || unit_enum == THICK)
-    return high;
-
-  return 0;
 }
 
 int main(int argc, char *argv[]) {
@@ -102,7 +93,15 @@ int main(int argc, char *argv[]) {
   
   FILE *reader_fp = NULL;
   FILE *writer_fp = NULL;
-  char line_buffer[512];
+  char line_buffer[1024];
+
+  char  window_gap = ENUM_TO_VAL(WINDOW_GAP, 2, 4, 8);
+  char  window_border = ENUM_TO_VAL(WINDOW_BORDER, 2, 4, 6);
+  float swayfx_transparancy = ENUM_TO_VAL(SWAYFX_TRANSPARANCY, 0.35f, 0.55f, 0.75f);
+  char  swayfx_blur = ENUM_TO_VAL(SWAYFX_TRANSPARANCY, 3, 5, 7);
+  char  swayfx_shadow = SWAYFX_SHADOW;
+  char  swayfx_corner_radius = ENUM_TO_VAL(SWAYFX_TRANSPARANCY, 4, 8, 12);
+  float swayfx_inactive_dim = ENUM_TO_VAL(SWAYFX_INACTIVE_DIM, 0.05f, 0.1f, 0.2f);
 
   reader_fp = fopen("./src/sway/config", "r");
 
@@ -110,7 +109,7 @@ int main(int argc, char *argv[]) {
   writer_fp = fopen(crnt_config, "w");
 
   for (int i = 0; i < 2; i++) {
-    fgets(line_buffer, 128, reader_fp);
+    fgets(line_buffer, sizeof(line_buffer), reader_fp);
     fputs(line_buffer, writer_fp);
   }
 
@@ -122,23 +121,58 @@ int main(int argc, char *argv[]) {
     is_color_hex(WALLPAPER) ? "solid_color" : "fill"
   );
 
-  int window_gap = enum_to_val(WINDOW_GAP, 4, 8, 12);
   WRITE_TO_FILE(
     line_buffer, 
     writer_fp, 
     "gaps inner %d\n"
-    "gaps outer %d\n\n",
-    window_gap, window_gap
-  );
-
-  int window_border = enum_to_val(WINDOW_BORDER, 1, 2, 4);
-  WRITE_TO_FILE(
-    line_buffer, 
-    writer_fp, 
-    "default_border pixel %d\n"
+    "gaps outer %d\n\n"
+    "default_border pixel %d\n\n"
     "default_floating_border pixel %d\n\n",
+    window_gap, window_gap,
     window_border, window_border
   );
+
+  WRITE_TO_FILE(
+    line_buffer,
+    writer_fp,
+    "# class                 border  backgr. text    indicator child_border\n"
+    "client.focused          %s %s %s #00000000 %s\n"
+    "client.focused_inactive %s %s %s #00000000 %s\n"
+    "client.unfocused        %s %s %s #00000000 %s\n"
+    "client.urgent           %s %s %s #00000000 %s\n"
+    "client.placeholder      %s %s %s #00000000 %s\n\n",
+    WINDOW_MANAGER_THEME[COLOR_BG3],    WINDOW_MANAGER_THEME[COLOR_BG],
+    WINDOW_MANAGER_THEME[COLOR_FG],     WINDOW_MANAGER_THEME[COLOR_BG3],
+    WINDOW_MANAGER_THEME[COLOR_BG2],    WINDOW_MANAGER_THEME[COLOR_BG3],
+    WINDOW_MANAGER_THEME[COLOR_FG1],    WINDOW_MANAGER_THEME[COLOR_BG2],
+    WINDOW_MANAGER_THEME[COLOR_BG2],    WINDOW_MANAGER_THEME[COLOR_BG3],
+    WINDOW_MANAGER_THEME[COLOR_FG1],    WINDOW_MANAGER_THEME[COLOR_BG2],
+    WINDOW_MANAGER_THEME[COLOR_YELLOW], WINDOW_MANAGER_THEME[COLOR_BG],    
+    WINDOW_MANAGER_THEME[COLOR_FG1],    WINDOW_MANAGER_THEME[COLOR_YELLOW],
+    WINDOW_MANAGER_THEME[COLOR_BG3],    WINDOW_MANAGER_THEME[COLOR_BG],
+    WINDOW_MANAGER_THEME[COLOR_FG],     WINDOW_MANAGER_THEME[COLOR_BG3]
+  );
+
+  if (WINDOW_MANAGER == SWAYFX) {
+    WRITE_TO_FILE(
+      line_buffer,
+      writer_fp,
+      "blur %s\n"
+      "blur_passes %d\n"
+      "blur_radius 5\n"
+      "blur_xray %s\n"
+      "shadows %s\n"
+      "corner_radius %d\n"
+      "default_dim_inactive %.3f\n",
+      SWAYFX_TRANSPARANCY != NONE &&
+      SWAYFX_BLUR != NONE ? "enable" : "disable",
+      swayfx_blur,
+      SWAYFX_BLUR_XRAY == TRUE ? "enable" : "disable",
+      SWAYFX_SHADOW == TRUE ? "enable" : "disable",
+      swayfx_corner_radius,
+      swayfx_inactive_dim
+    );
+  }
 
   if (BAR_TYPE == WAYBAR) {
     WRITE_TO_FILE(
@@ -161,21 +195,138 @@ int main(int argc, char *argv[]) {
       "  gaps %d\n"
       "  font pango:CaskaydiaCove Nerd Font Bold 12\n"
       "  colors {\n"
-      "    background %s\n"
+      "    background %s%.2x\n"
       "    focused_workspace %s %s %s\n"
       "  }\n"
       "}\n\n",
       BAR_POSITION == BOTTOM ? "bottom" : "top",
       window_gap * 2,
       WINDOW_MANAGER_THEME[COLOR_BG],
+      (int)((1.0f - swayfx_transparancy) * 100 + 55),
       WINDOW_MANAGER_THEME[COLOR_YELLOW1],
       WINDOW_MANAGER_THEME[COLOR_YELLOW],
       WINDOW_MANAGER_THEME[COLOR_BG]
     );
+
+    if (WINDOW_MANAGER == SWAYFX) {
+      WRITE_TO_FILE(
+        line_buffer, 
+        writer_fp, 
+        "layer_effects \"panel\" blur %s; shadows %s; corner_radius %d",
+        SWAYFX_TRANSPARANCY != NONE && SWAYFX_BLUR != NONE ? "enable" : "disable",
+        SWAYFX_SHADOW == TRUE ? "enable" : "disable",
+        swayfx_corner_radius
+      );
+    }
+  }
+
+  while (fgets(line_buffer, sizeof(line_buffer), reader_fp) != NULL) {
+    fputs(line_buffer, writer_fp);
   }
 
   fclose(reader_fp);
   fclose(writer_fp);
+
+  if (BAR_TYPE == WAYBAR) {
+    reader_fp = fopen("./src/sway/waybar_config.jsonc", "r");
+
+    snprintf(crnt_config, 64, "%s/waybar_config.jsonc", sway_dir);
+    writer_fp = fopen(crnt_config, "w");
+
+    fgets(line_buffer, sizeof(line_buffer), reader_fp);
+    fputs(line_buffer, writer_fp);
+
+    WRITE_TO_FILE(
+      line_buffer,
+      writer_fp,
+      "  \"position\": \"%s\",\n"
+      "  \"margin-top\": %d,\n"
+      "  \"margin-bottom\": %d,\n"
+      "  \"margin-left\": %d,\n"
+      "  \"margin-right\": %d,\n",
+      BAR_POSITION == TOP ? "top" : "bottom",
+      BAR_POSITION == TOP ? window_gap : 0,
+      BAR_POSITION == BOTTOM ? window_gap : 0,
+      window_gap, window_gap
+    );
+
+    while (fgets(line_buffer, sizeof(line_buffer), reader_fp) != NULL) {
+      fputs(line_buffer, writer_fp);
+    }
+
+    fclose(reader_fp);
+    fclose(writer_fp);
+
+    reader_fp = fopen("./src/sway/waybar_style.css", "r");
+
+    snprintf(crnt_config, 64, "%s/waybar_style.css", sway_dir);
+    writer_fp = fopen(crnt_config, "w");
+
+    WRITE_TO_FILE(
+      line_buffer, 
+      writer_fp, 
+      "@define-color bg      %s;\n"
+      "@define-color bg1     %s;\n"
+      "@define-color bg2     %s;\n"
+      "@define-color bg3     %s;\n"
+      "@define-color bg4     %s;\n"
+      "@define-color fg      %s;\n"
+      "@define-color fg1     %s;\n"
+      "@define-color red     %s;\n"
+      "@define-color red1    %s;\n"
+      "@define-color orange  %s;\n"
+      "@define-color orange1 %s;\n"
+      "@define-color yellow  %s;\n"
+      "@define-color yellow1 %s;\n"
+      "@define-color green   %s;\n"
+      "@define-color green1  %s;\n"
+      "@define-color blue    %s;\n"
+      "@define-color blue1   %s;\n"
+      "@define-color purple  %s;\n"
+      "@define-color purple1 %s;\n\n",
+      WINDOW_MANAGER_THEME[COLOR_BG],
+      WINDOW_MANAGER_THEME[COLOR_BG1],
+      WINDOW_MANAGER_THEME[COLOR_BG2],
+      WINDOW_MANAGER_THEME[COLOR_BG3],
+      WINDOW_MANAGER_THEME[COLOR_BG4],
+      WINDOW_MANAGER_THEME[COLOR_FG],
+      WINDOW_MANAGER_THEME[COLOR_FG1],
+      WINDOW_MANAGER_THEME[COLOR_RED],
+      WINDOW_MANAGER_THEME[COLOR_RED1],
+      WINDOW_MANAGER_THEME[COLOR_ORANGE],
+      WINDOW_MANAGER_THEME[COLOR_ORANGE1],
+      WINDOW_MANAGER_THEME[COLOR_YELLOW],
+      WINDOW_MANAGER_THEME[COLOR_YELLOW1],
+      WINDOW_MANAGER_THEME[COLOR_GREEN],
+      WINDOW_MANAGER_THEME[COLOR_GREEN1],
+      WINDOW_MANAGER_THEME[COLOR_BLUE],
+      WINDOW_MANAGER_THEME[COLOR_BLUE1],
+      WINDOW_MANAGER_THEME[COLOR_PURPLE],
+      WINDOW_MANAGER_THEME[COLOR_PURPLE1]
+    );
+    
+    /*
+     * TODO: implement the config manager for waybar.
+     * */
+
+    while (fgets(line_buffer, sizeof(line_buffer), reader_fp) != NULL) {
+      fputs(line_buffer, writer_fp);
+    }
+
+    fclose(reader_fp);
+    fclose(writer_fp);
+  }
+  else if (BAR_TYPE == I3_STATUS) {
+    reader_fp = fopen("./src/sway/i3status_config.toml", "r");
+
+    snprintf(crnt_config, 64, "%s/i3status_config.toml", sway_dir);
+    writer_fp = fopen(crnt_config, "w");
+
+    
+
+    fclose(reader_fp);
+    fclose(writer_fp);
+  }
 
   return 0;
 }

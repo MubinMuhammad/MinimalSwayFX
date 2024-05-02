@@ -54,24 +54,6 @@
 #define WINDOW_BORDER THIN
 
 /*
- * This will be the bar you are going to use
- * it does depend on the dependencies. e.g. if you have
- * installed waybar you can't choose I3_STATUS here.
- *
- * Available options: WAYBAR, I3_STATUS
- * */
-#define BAR_TYPE I3_STATUS
-
-/*
- * This will determine the bar placement.
- * Currently only supports top & bottom.
- * Though left & right shall come soon.
- *
- * Available options: TOP, BOTTOM
- * */
-#define BAR_POSITION TOP
-
-/*
  * Determines how transparent an winodow should
  * be (if the has the feature). If you want to
  * apply blur, Make sure to enable it to some
@@ -89,6 +71,13 @@
  * Available options: NONE, LOW, MEDIUM, HIGH
  * */
 #define SWAYFX_BLUR MEDIUM
+
+/*
+ * if enabled, transparent window will only
+ * show blur of the wallpaper & not any window
+ * behind it.
+ * */
+#define SWAYFX_BLUR_XRAY FALSE
 
 /*
  * If enabled, windows will have shadows.
@@ -112,5 +101,23 @@
  * Available options: NONE, LOW, MEDIUM, HIGH
  * */
 #define SWAYFX_INACTIVE_DIM LOW
+
+/*
+ * This will be the bar you are going to use
+ * it does depend on the dependencies. e.g. if you have
+ * installed waybar you can't choose I3_STATUS here.
+ *
+ * Available options: WAYBAR, I3_STATUS
+ * */
+#define BAR_TYPE I3_STATUS
+
+/*
+ * This will determine the bar placement.
+ * Currently only supports top & bottom.
+ * Though left & right shall come soon.
+ *
+ * Available options: TOP, BOTTOM
+ * */
+#define BAR_POSITION TOP
 
 #endif
