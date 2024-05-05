@@ -8,6 +8,9 @@ style = "bold"
 [shell]
 program = "/bin/fish"
 
+[window]
+opacity = !SWAYFX_TRANSPARANCY_INVERT
+
 [window.padding]
 x = 20
 y = 20

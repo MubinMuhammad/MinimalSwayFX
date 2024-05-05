@@ -30,6 +30,13 @@
 #define WINDOW_MANAGER_THEME GRUVBOX_MATERIAL_DARK
 
 /*
+ * the font specification to use throuh-out the system.
+ * */
+#define WINDOW_MANAGER_FONT "Caskaydia Cove Nerd Font"
+#define WINDOW_MANAGER_FONT_STYLE "bold"
+#define WINDOW_MANAGER_FONT_SIZE 12
+
+/*
  * The wallpaper can be the path
  * to a wallpaper or a #RRGGBB hex format
  * for solid colors. Make sure to put
