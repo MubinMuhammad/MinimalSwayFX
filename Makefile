@@ -11,5 +11,5 @@ run: compile
 	./$(EXE)
 
 clean:
-	rm -fr ./$(EXE)
-
+	rm -fr *.txt
+	find . -maxdepth 1 -type f -executable | xargs rm

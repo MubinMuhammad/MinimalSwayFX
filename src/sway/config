@@ -1,4 +1,21 @@
-font pango:CaskaydiaCove Nerd Font 12
+font pango:~WINDOW_MANAGER_FONT ~WINDOW_MANAGER_FONT_STYLE ~WINDOW_MANAGER_FONT_SIZE
+
+output * ~WALLPAPER ~WALLPAPER_MODE
+
+gaps inner ~WINDOW_GAP
+gaps outer ~WINDOW_GAP
+
+default_border pixel ~WINDOW_BORDER
+default_floating_border pixel ~WINDOW_BORDER
+
+# swayfx
+~IF_SWAYFX blur ~IS_SWAYFX_BLUR
+~IF_SWAYFX blur_xray ~IS_SWAYFX_BLUR_XRAY
+~IF_SWAYFX blur_passes ~SWAYFX_BLUR
+~IF_SWAYFX blur_radius 5
+~IF_SWAYFX shadows ~IS_SWAYFX_SHADOW
+~IF_SWAYFX corner_radius ~SWAYFX_CORNER_RADIUS
+~IF_SWAYFX default_dim_inactive ~SWAYFX_INACTIVE_DIM
 
 # variables
 set $mod   Mod4

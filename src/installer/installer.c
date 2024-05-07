@@ -12,12 +12,12 @@
   (uenum == HIGH || uenum == THICK ? (high) : (0))))
 
 /* global varibles */
-char  window_gap = enum_to_val(WINDOW_GAP, 2, 4, 8);
-char  window_border = enum_to_val(WINDOW_BORDER, 2, 4, 6);
+char window_gap = enum_to_val(WINDOW_GAP, 2, 4, 8);
+char window_border = enum_to_val(WINDOW_BORDER, 2, 4, 6);
 float swayfx_transparancy = enum_to_val(SWAYFX_TRANSPARANCY, 0.35f, 0.55f, 0.75f);
-char  swayfx_blur = enum_to_val(SWAYFX_TRANSPARANCY, 3, 5, 7);
-char  swayfx_shadow = SWAYFX_SHADOW;
-char  swayfx_corner_radius = enum_to_val(SWAYFX_TRANSPARANCY, 4, 8, 12);
+char swayfx_blur = enum_to_val(SWAYFX_TRANSPARANCY, 3, 5, 7);
+char swayfx_shadow = SWAYFX_SHADOW;
+char swayfx_corner_radius = enum_to_val(SWAYFX_TRANSPARANCY, 4, 8, 12);
 float swayfx_inactive_dim = enum_to_val(SWAYFX_INACTIVE_DIM, 0.05f, 0.1f, 0.2f);
 
 /* function implementaions */
@@ -64,19 +64,21 @@ int get_option(const char *in, int in_size,
 }
 
 void change_token(char *dest, char *first, char *mid, char *extension) {
-  strncat(dest, " ", 64 * 3 + 3);
   strncat(dest, first, 64 * 3 + 3);
   strncat(dest, mid, 64 * 3 + 3);
   strncat(dest, extension, 64 * 3 + 3);
+
+  if (strlen(extension) == 0 || extension[strlen(extension) - 1] != '\n')
+    strncat(dest, " ", 2);
 }
 
 void token_to_option(const char *in, char *out_appended, int out_appended_size) {
   int in_size = strlen(in);
   char forward_buffer[64], buffer[64], extension_buffer[64];
 
-  forward_buffer[0] = '\0';
-  buffer[0] = '\0';
-  extension_buffer[0] = '\0';
+  memset(forward_buffer, 0, sizeof(forward_buffer));
+  memset(buffer, 0, sizeof(buffer));
+  memset(extension_buffer, 0, sizeof(extension_buffer));
 
   if (!get_option(
     in, in_size, 
@@ -84,7 +86,11 @@ void token_to_option(const char *in, char *out_appended, int out_appended_size) 
     buffer, sizeof(buffer), 
     extension_buffer, sizeof(extension_buffer)
   )) {
-    strncat(out_appended, forward_buffer, out_appended_size - strlen(out_appended) + 1);
+    strncat(out_appended, forward_buffer, sizeof(forward_buffer) + 1);
+
+    if (forward_buffer[strlen(forward_buffer) - 1] != '\n')
+      strncat(out_appended, " ", 2);
+
     return;
   }
 
@@ -92,11 +98,13 @@ void token_to_option(const char *in, char *out_appended, int out_appended_size) 
     change_token(out_appended, forward_buffer, WALLPAPER, extension_buffer);
   else if (strcmp(buffer, "WALLPAPER_MODE") == 0)
     change_token(out_appended, forward_buffer, is_color_hex(WALLPAPER) ? "solid_color" : "fill", extension_buffer);
+  else if (strcmp(buffer, "IF_SWAYFX") == 0)
+    change_token(out_appended, forward_buffer, WINDOW_MANAGER == SWAYFX ? "\0" : "#", extension_buffer);
   else {
-    strncat(out_appended, forward_buffer, 64 * 3 + 4);
-    strncat(out_appended, "~", 64 * 3 + 4);
-    strncat(out_appended, buffer, 64 * 3 + 4);
-    strncat(out_appended, extension_buffer, 64 * 3 + 4);
+    strncat(out_appended, forward_buffer, sizeof(forward_buffer) + 1);
+    strncat(out_appended, "~", 2);
+    strncat(out_appended, buffer, sizeof(buffer) + 1);
+    strncat(out_appended, extension_buffer, sizeof(extension_buffer) + 1);
   }
 }
 
@@ -119,7 +127,7 @@ void format_file(FILE *in, FILE *out) {
 }
 
 int main() {
-  FILE *fp = fopen("in.txt", "r");
+  FILE *fp = fopen("./src/sway/config", "r");
   FILE *wfp = fopen("out.txt", "w");
 
   format_file(fp, wfp);
