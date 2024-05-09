@@ -4,7 +4,7 @@
 
 #include "types.h"
 #include "colors.h"
-#include "../../config.h"
+#include "../config.h"
 
 #define enum_to_val(uenum, low, mid, high) \
   (uenum == LOW || uenum == THIN ? (low) : \
@@ -21,13 +21,6 @@ char swayfx_corner_radius = enum_to_val(SWAYFX_TRANSPARANCY, 4, 8, 12);
 float swayfx_inactive_dim = enum_to_val(SWAYFX_INACTIVE_DIM, 0.05f, 0.1f, 0.2f);
 
 /* function implementaions */
-char is_color_hex(const char *hex) {
-  if (strlen(hex) > 7 || hex[0] != '#')
-    return 0;
-
-  return 1;
-}
-
 int get_option(const char *in, int in_size, 
                char *out_forward, int out_forward_size,
                char *out, int out_size, 
@@ -63,10 +56,10 @@ int get_option(const char *in, int in_size,
   return 1;
 }
 
-void change_token(char *dest, char *first, char *mid, char *extension) {
-  strncat(dest, first, 64 * 3 + 3);
-  strncat(dest, mid, 64 * 3 + 3);
-  strncat(dest, extension, 64 * 3 + 3);
+void change_token(char *dest, char *first, char *mid, char *extension, int buffer_size) {
+  strncat(dest, first, buffer_size + 1);
+  strncat(dest, mid, buffer_size + 1);
+  strncat(dest, extension, buffer_size + 1);
 
   if (strlen(extension) == 0 || extension[strlen(extension) - 1] != '\n')
     strncat(dest, " ", 2);

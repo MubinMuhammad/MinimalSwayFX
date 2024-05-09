@@ -27,7 +27,7 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
-#include "src/installer/types.h"
+#include "installer/types.h"
 
 /*
  * It will highly depend on the dependencies list.
