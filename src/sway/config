@@ -16,22 +16,38 @@ default_floating_border pixel ~WINDOW_BORDER
 ~IF_SWAYFX shadows ~IS_SWAYFX_SHADOW
 ~IF_SWAYFX corner_radius ~SWAYFX_CORNER_RADIUS
 ~IF_SWAYFX default_dim_inactive ~SWAYFX_INACTIVE_DIM
+~IF_SWAYFX layer_effects "~BAR_TYPE" ~BAR_SHADOW; ~BAR_CORNER_RADIUS; ~BAR_BLUR
+
+bar {
+  swaybar_command ~BAR_CMD
+
+  status_command /usr/bin/i3status-rs $HOME/.config/sway/i3status_config.toml
+  position ~BAR_POSITION
+  gaps ~BAR_GAP
+  height ~BAR_HEIGHT
+  font pango:~WINDOW_MANAGER_FONT ~WINDOW_MANAGER_FONT_STYLE ~WINDOW_MANAGER_FONT_SIZE
+  colors {
+    background ~COLOR_BG1\a ~HEX_ALPHA
+    focused_workspace ~COLOR_ACCENT1\a ~HEX_ALPHA ~COLOR_ACCENT\a ~HEX_ALPHA ~COLOR_FG1\a ~HEX_ALPHA
+    inactive_workspace ~COLOR_BG3\a ~HEX_ALPHA ~COLOR_BG2\a ~HEX_ALPHA ~COLOR_FG1\a ~HEX_ALPHA
+  }
+}
 
 # variables
-set $mod   Mod4
-set $left  h
-set $down  j
-set $up    k 
-set $right l 
-set $term  alacritty --config-file $HOME/.config/sway/alacritty_config.toml
-set $menu  tofi-drun -c $HOME/.config/sway/tofi_config | xargs swaymsg exec --
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term alacritty
+set $menu tofi-drun | xargs swaymsg exec --
 
 # common bindings
 bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit Sway' 'swaymsg exit' --font="CaskaydiaCove Nerd Font"
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit Sway' 'swaymsg exit'
 floating_modifier $mod normal
 
 # more bindings
