@@ -53,6 +53,6 @@ extern const char *GRUVBOX_MATERIAL_DARK[TOTAL_COLORS];
 // function declarations
 int is_option_color(const char *option, int option_size);
 char is_color_hex(const char *hex);
-int hex_to_rgb(const char *hex, unsigned char *out_r, unsigned char *out_g, unsigned char *out_b);
+int hex_to_rgba_str(const char *hex, float alpha, char *out_rgb_format);
 
 #endif

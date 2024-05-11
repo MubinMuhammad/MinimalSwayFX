@@ -1,4 +1,5 @@
 #include "colors.h"
+
 #include <string.h>
 
 const char *GRUVBOX_MATERIAL_DARK[TOTAL_COLORS] = {
@@ -34,47 +35,40 @@ static int hexchar_to_num(char a) {
   return b;
 }
 
+static int hex_to_rgb(const char *hex, unsigned char *out_r, unsigned char *out_g, unsigned char *out_b) {
+  int hex_size = strlen(hex);
+
+  if (is_color_hex(hex) == 0)
+    return 1;
+
+  *out_r = hexchar_to_num(hex[1]) + hexchar_to_num(hex[0]) * 16;
+  *out_g = hexchar_to_num(hex[3]) + hexchar_to_num(hex[2]) * 16;
+  *out_b = hexchar_to_num(hex[5]) + hexchar_to_num(hex[4]) * 16;
+
+  return 0;
+}
+
 int is_option_color(const char *option, int option_size) {
-  if (strncpy("COLOR_BG", option, option_size))
-    return COLOR_BG;
-  else if (strncpy("COLOR_BG1", option, option_size))
-    return COLOR_BG1;
-  else if (strncpy("COLOR_BG2", option, option_size))
-    return COLOR_BG2;
-  else if (strncpy("COLOR_BG3", option, option_size))
-    return COLOR_BG3;
-  else if (strncpy("COLOR_BG4", option, option_size))
-    return COLOR_BG4;
-  else if (strncpy("COLOR_BG_DARK", option, option_size))
-    return COLOR_BG_DARK;
-  else if (strncpy("COLOR_FG", option, option_size))
-    return COLOR_FG;
-  else if (strncpy("COLOR_FG1", option, option_size))
-    return COLOR_FG1;
-  else if (strncpy("COLOR_RED", option, option_size))
-    return COLOR_RED;
-  else if (strncpy("COLOR_RED1", option, option_size))
-    return COLOR_RED1;
-  else if (strncpy("COLOR_ORANGE", option, option_size))
-    return COLOR_ORANGE;
-  else if (strncpy("COLOR_ORANGE1", option, option_size))
-    return COLOR_ORANGE1;
-  else if (strncpy("COLOR_YELLOW", option, option_size))
-    return COLOR_YELLOW;
-  else if (strncpy("COLOR_YELLOW1", option, option_size))
-    return COLOR_YELLOW1;
-  else if (strncpy("COLOR_GREEN", option, option_size))
-    return COLOR_GREEN;
-  else if (strncpy("COLOR_GREEN1", option, option_size))
-    return COLOR_GREEN1;
-  else if (strncpy("COLOR_BLUE", option, option_size))
-    return COLOR_BLUE;
-  else if (strncpy("COLOR_BLUE1", option, option_size))
-    return COLOR_BLUE1;
-  else if (strncpy("COLOR_PURPLE", option, option_size))
-    return COLOR_PURPLE;
-  else if (strncpy("COLOR_PURPLE1", option, option_size))
-    return COLOR_PURPLE1;
+  if (strcmp("COLOR_BG", option)) return COLOR_BG;
+  else if (strcmp("COLOR_BG1", option, option_size)) return COLOR_BG1;
+  else if (strcmp("COLOR_BG2", option, option_size)) return COLOR_BG2;
+  else if (strcmp("COLOR_BG3", option, option_size)) return COLOR_BG3;
+  else if (strcmp("COLOR_BG4", option, option_size)) return COLOR_BG4;
+  else if (strcmp("COLOR_BG_DARK", option, option_size)) return COLOR_BG_DARK;
+  else if (strcmp("COLOR_FG", option, option_size)) return COLOR_FG;
+  else if (strcmp("COLOR_FG1", option, option_size)) return COLOR_FG1;
+  else if (strcmp("COLOR_RED", option, option_size)) return COLOR_RED;
+  else if (strcmp("COLOR_RED1", option, option_size)) return COLOR_RED1;
+  else if (strcmp("COLOR_ORANGE", option, option_size)) return COLOR_ORANGE;
+  else if (strcmp("COLOR_ORANGE1", option, option_size)) return COLOR_ORANGE1;
+  else if (strcmp("COLOR_YELLOW", option, option_size)) return COLOR_YELLOW;
+  else if (strcmp("COLOR_YELLOW1", option, option_size)) return COLOR_YELLOW1;
+  else if (strcmp("COLOR_GREEN", option, option_size)) return COLOR_GREEN;
+  else if (strcmp("COLOR_GREEN1", option, option_size)) return COLOR_GREEN1;
+  else if (strcmp("COLOR_BLUE", option, option_size)) return COLOR_BLUE;
+  else if (strcmp("COLOR_BLUE1", option, option_size)) return COLOR_BLUE1;
+  else if (strcmp("COLOR_PURPLE", option, option_size)) return COLOR_PURPLE;
+  else if (strcmp("COLOR_PURPLE1", option, option_size)) return COLOR_PURPLE1;
 
   return COLOR_INVALID;
 }
@@ -86,15 +80,14 @@ char is_color_hex(const char *hex) {
   return 1;
 }
 
-int hex_to_rgb(const char *hex, unsigned char *out_r, unsigned char *out_g, unsigned char *out_b) {
-  int hex_size = strlen(hex);
+int hex_to_rgba_str(const char *hex, float alpha, char *out_rgb_format) {
+  unsigned char r;
+  unsigned char g;
+  unsigned char b;
 
-  if (is_color_hex(hex) == 0)
+  if (!hex_to_rgb(hex, &r, &g, &b))
     return 1;
 
-  *out_r = hexchar_to_num(hex[1]) + hexchar_to_num(hex[0]) * 16;
-  *out_g = hexchar_to_num(hex[3]) + hexchar_to_num(hex[2]) * 16;
-  *out_b = hexchar_to_num(hex[5]) + hexchar_to_num(hex[4]) * 16;
-
+  sprintf("rgba(%d, %d, %d, %.3f);", r, g, b, alpha);
   return 0;
 }

@@ -36,7 +36,7 @@
  *
  * Available options: SWAY, SWAYFX
  * */
-#define WINDOW_MANAGER SWAY
+#define WINDOW_MANAGER SWAYFX
 
 /*
  * this is going to be the theme that is going to be
