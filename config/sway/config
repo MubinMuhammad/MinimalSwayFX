@@ -19,18 +19,18 @@ default_floating_border pixel ~WINDOW_BORDER
 ~IF_SWAYFX layer_effects "~BAR_TYPE" ~BAR_SHADOW; ~BAR_CORNER_RADIUS; ~BAR_BLUR
 
 bar {
-  swaybar_command ~BAR_CMD
+  swaybar_command ~BAR_TYPE
 
-  status_command /usr/bin/i3status-rs $HOME/.config/sway/i3status_config.toml
-  position ~BAR_POSITION
-  gaps ~BAR_GAP
-  height ~BAR_HEIGHT
-  font pango:~WINDOW_MANAGER_FONT ~WINDOW_MANAGER_FONT_STYLE ~WINDOW_MANAGER_FONT_SIZE
-  colors {
-    background ~COLOR_BG1\a ~HEX_ALPHA
-    focused_workspace ~COLOR_ACCENT1\a ~HEX_ALPHA ~COLOR_ACCENT\a ~HEX_ALPHA ~COLOR_FG1\a ~HEX_ALPHA
-    inactive_workspace ~COLOR_BG3\a ~HEX_ALPHA ~COLOR_BG2\a ~HEX_ALPHA ~COLOR_FG1\a ~HEX_ALPHA
-  }
+  ~IF_I3_STATUS status_command /usr/bin/i3status-rs $HOME/.config/sway/i3status_config.toml
+  ~IF_I3_STATUS position ~BAR_POSITION
+  ~IF_I3_STATUS gaps ~BAR_GAP
+  ~IF_I3_STATUS height ~BAR_HEIGHT
+  ~IF_I3_STATUS font pango:~WINDOW_MANAGER_FONT ~WINDOW_MANAGER_FONT_STYLE ~WINDOW_MANAGER_FONT_SIZE
+  ~IF_I3_STATUS colors {
+  ~IF_I3_STATUS   background ~COLOR_BG1\a ~HEX_ALPHA
+  ~IF_I3_STATUS   focused_workspace ~COLOR_ACCENT1\a ~HEX_ALPHA ~COLOR_ACCENT\a ~HEX_ALPHA ~COLOR_FG1\a ~HEX_ALPHA
+  ~IF_I3_STATUS   inactive_workspace ~COLOR_BG3\a ~HEX_ALPHA ~COLOR_BG2\a ~HEX_ALPHA ~COLOR_FG1\a ~HEX_ALPHA
+  ~IF_I3_STATUS }
 }
 
 # variables

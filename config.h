@@ -48,7 +48,7 @@
 
 /*
  * the font specification to use throuh-out the system.
- * make sure to put "" with the fonts name & style.
+ * make sure to put "" with the fonts name, style & size.
  * */
 #define WINDOW_MANAGER_FONT "Caskaydia Cove Nerd Font"
 #define WINDOW_MANAGER_FONT_STYLE "bold"
@@ -101,6 +101,8 @@
  * if enabled, transparent window will only
  * show blur of the wallpaper & not any window
  * behind it.
+ *
+ * Available options: TRUE, FALSE
  * */
 #define SWAYFX_BLUR_XRAY FALSE
 

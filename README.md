@@ -48,11 +48,3 @@ The programs that are used to this configuration:
 ## Contribution
 If you want to contribute to the project, add a star to it. And if you want to change something project just go ahead and create a pull request. If your request is praiseworthy, I will merge it. Thanks to everybody who is using this!
 
-## Take a look! (Thanks)
-<a href="https://star-history.com/#MubinMuhammad/MinimalSwayFX&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=MubinMuhammad/MinimalSwayFX&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=MubinMuhammad/MinimalSwayFX&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=MubinMuhammad/MinimalSwayFX&type=Date" />
- </picture>
-</a>

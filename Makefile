@@ -1,6 +1,6 @@
 COMPILER := gcc
-FILES := ./src/installer/installer.c
-EXE := installer
+FILES := ./installer/installer.c ./installer/colors.c
+EXE := _installer_
 
 compile:
 	$(COMPILER) -o $(EXE) $(FILES)

@@ -87,12 +87,88 @@ void token_to_option(const char *in, char *out_appended, int out_appended_size) 
     return;
   }
 
-  if (strcmp(buffer, "WALLPAPER") == 0)
-    change_token(out_appended, forward_buffer, WALLPAPER, extension_buffer);
+  char change_buffer[32];
+
+  if (strcmp(buffer, "IF_SWAYFX") == 0)
+    change_token(out_appended, forward_buffer, WINDOW_MANAGER == SWAYFX ? "\0" : "#", extension_buffer, sizeof(buffer));
+  else if (strcmp(buffer, "WINDOW_MANAGER_FONT") == 0)
+    change_token(out_appended, forward_buffer, WINDOW_MANAGER_FONT, extension_buffer, sizeof(buffer));
+  else if (strcmp(buffer, "WINDOW_MANAGER_FONT_STYLE") == 0)
+    change_token(out_appended, forward_buffer, WINDOW_MANAGER_FONT_STYLE, extension_buffer, sizeof(buffer));
+  else if (strcmp(buffer, "WINDOW_MANAGER_FONT_SIZE") == 0) {
+    snprintf(change_buffer, sizeof(change_buffer), "%d", WINDOW_MANAGER_FONT_SIZE);
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "WALLPAPER") == 0)
+    change_token(out_appended, forward_buffer, WALLPAPER, extension_buffer, sizeof(buffer));
   else if (strcmp(buffer, "WALLPAPER_MODE") == 0)
-    change_token(out_appended, forward_buffer, is_color_hex(WALLPAPER) ? "solid_color" : "fill", extension_buffer);
-  else if (strcmp(buffer, "IF_SWAYFX") == 0)
-    change_token(out_appended, forward_buffer, WINDOW_MANAGER == SWAYFX ? "\0" : "#", extension_buffer);
+    change_token(out_appended, forward_buffer, is_color_hex(WALLPAPER) ? "solid_color" : "fill", extension_buffer, sizeof(buffer));
+  else if (strcmp(buffer, "WINDOW_GAP") == 0) {
+    snprintf(change_buffer, sizeof(change_buffer), "%d", window_gap);
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "WINDOW_GAP") == 0) {
+    snprintf(change_buffer, sizeof(change_buffer), "%d", window_gap * 2);
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "WINDOW_BORDER") == 0) {
+    snprintf(change_buffer, sizeof(change_buffer), "%d", window_border);
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "SWAYFX_TRANSPARANCY") == 0) {
+    snprintf(change_buffer, sizeof(change_buffer), "%.3f", WINDOW_MANAGER == SWAYFX ? (float)window_border : 0.0f);
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "SWAYFX_TRANSPARANCY_INVERTED") == 0) {
+    snprintf(change_buffer, sizeof(change_buffer), "%.3f", WINDOW_MANAGER == SWAYFX ? 1.0f - (float)window_border : 1.0f);
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "IS_SWAYFX_BLUR") == 0) {
+    snprintf(change_buffer, 
+             sizeof(change_buffer),
+             "%s", SWAYFX_TRANSPARANCY != NONE ? (SWAYFX_BLUR != NONE ? "enable" : "disable") : "disable");
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "SWAYFX_BLUR") == 0) {
+    snprintf(change_buffer, sizeof(change_buffer), "%d", swayfx_blur);
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "IS_SWAYFX_BLUR_XRAY")) {
+    snprintf(change_buffer, sizeof(change_buffer), "%s", SWAYFX_BLUR_XRAY == TRUE ? "enable" : "disable");
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "IS_SWAYFX_SHADOW")) {
+    snprintf(change_buffer, sizeof(change_buffer), "%s", SWAYFX_SHADOW == TRUE ? "enable" : "disable");
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "SWAYFX_CORNER_RADIUS")) {
+    snprintf(change_buffer, sizeof(change_buffer), "%d", swayfx_corner_radius);
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "SWAYFX_INACTIVE_DIM")) {
+    snprintf(change_buffer, sizeof(change_buffer), "%.3f", swayfx_inactive_dim);
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "BAR_TYPE")) {
+    snprintf(change_buffer, sizeof(change_buffer), "%s", BAR_TYPE == I3_STATUS ? "i3status-rs" : "waybar");
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "IF_I3_STATUS")) {
+    snprintf(change_buffer, sizeof(change_buffer), "%s", BAR_TYPE == I3_STATUS ? "\0" : "#");
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "BAR_POSITION")) {
+    snprintf(change_buffer, sizeof(change_buffer), "%s", BAR_POSITION == BOTTOM ? "bottom" : "top");
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "BAR_HEIGHT")) {
+    snprintf(change_buffer, sizeof(change_buffer), "%d", WINDOW_MANAGER_FONT_SIZE + 12);
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
+  else if (strcmp(buffer, "BAR_HEIGHT")) {
+    snprintf(change_buffer, sizeof(change_buffer), "%d", WINDOW_MANAGER_FONT_SIZE + 12);
+    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
+  }
   else {
     strncat(out_appended, forward_buffer, sizeof(forward_buffer) + 1);
     strncat(out_appended, "~", 2);
@@ -120,7 +196,7 @@ void format_file(FILE *in, FILE *out) {
 }
 
 int main() {
-  FILE *fp = fopen("./src/sway/config", "r");
+  FILE *fp = fopen("./config/sway/config", "r");
   FILE *wfp = fopen("out.txt", "w");
 
   format_file(fp, wfp);
