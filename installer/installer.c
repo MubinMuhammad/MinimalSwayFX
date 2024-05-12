@@ -88,6 +88,7 @@ void token_to_option(const char *in, char *out_appended, int out_appended_size) 
   }
 
   char change_buffer[32];
+  memset(change_buffer, 0, sizeof(change_buffer));
 
   if (strcmp(buffer, "IF_SWAYFX") == 0)
     change_token(out_appended, forward_buffer, WINDOW_MANAGER == SWAYFX ? "\0" : "#", extension_buffer, sizeof(buffer));
@@ -133,39 +134,36 @@ void token_to_option(const char *in, char *out_appended, int out_appended_size) 
     snprintf(change_buffer, sizeof(change_buffer), "%d", swayfx_blur);
     change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
   }
-  else if (strcmp(buffer, "IS_SWAYFX_BLUR_XRAY")) {
+  else if (strcmp(buffer, "IS_SWAYFX_BLUR_XRAY") == 0) {
     snprintf(change_buffer, sizeof(change_buffer), "%s", SWAYFX_BLUR_XRAY == TRUE ? "enable" : "disable");
     change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
   }
-  else if (strcmp(buffer, "IS_SWAYFX_SHADOW")) {
+  else if (strcmp(buffer, "IS_SWAYFX_SHADOW") == 0) {
     snprintf(change_buffer, sizeof(change_buffer), "%s", SWAYFX_SHADOW == TRUE ? "enable" : "disable");
     change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
   }
-  else if (strcmp(buffer, "SWAYFX_CORNER_RADIUS")) {
+  else if (strcmp(buffer, "SWAYFX_CORNER_RADIUS") == 0) {
     snprintf(change_buffer, sizeof(change_buffer), "%d", swayfx_corner_radius);
+    printf("%s\n", change_buffer);
     change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
   }
-  else if (strcmp(buffer, "SWAYFX_INACTIVE_DIM")) {
+  else if (strcmp(buffer, "SWAYFX_INACTIVE_DIM") == 0) {
     snprintf(change_buffer, sizeof(change_buffer), "%.3f", swayfx_inactive_dim);
     change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
   }
-  else if (strcmp(buffer, "BAR_TYPE")) {
+  else if (strcmp(buffer, "BAR_TYPE") == 0) {
     snprintf(change_buffer, sizeof(change_buffer), "%s", BAR_TYPE == I3_STATUS ? "i3status-rs" : "waybar");
     change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
   }
-  else if (strcmp(buffer, "IF_I3_STATUS")) {
+  else if (strcmp(buffer, "IF_I3_STATUS") == 0) {
     snprintf(change_buffer, sizeof(change_buffer), "%s", BAR_TYPE == I3_STATUS ? "\0" : "#");
     change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
   }
-  else if (strcmp(buffer, "BAR_POSITION")) {
+  else if (strcmp(buffer, "BAR_POSITION") == 0) {
     snprintf(change_buffer, sizeof(change_buffer), "%s", BAR_POSITION == BOTTOM ? "bottom" : "top");
     change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
   }
-  else if (strcmp(buffer, "BAR_HEIGHT")) {
-    snprintf(change_buffer, sizeof(change_buffer), "%d", WINDOW_MANAGER_FONT_SIZE + 12);
-    change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
-  }
-  else if (strcmp(buffer, "BAR_HEIGHT")) {
+  else if (strcmp(buffer, "BAR_HEIGHT") == 0) {
     snprintf(change_buffer, sizeof(change_buffer), "%d", WINDOW_MANAGER_FONT_SIZE + 12);
     change_token(out_appended, forward_buffer, change_buffer, extension_buffer, sizeof(buffer));
   }
