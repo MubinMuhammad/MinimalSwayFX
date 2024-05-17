@@ -1,5 +1,5 @@
-COMPILER := gcc
-FILES := ./installer/installer.c ./installer/colors.c
+COMPILER := g++
+FILES := ./installer/installer.cpp
 EXE := _installer_
 
 compile:
