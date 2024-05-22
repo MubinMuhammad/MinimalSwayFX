@@ -70,6 +70,15 @@ const std::vector<std::string> &msfx_theme = gruvbox_dark;
 const std::string msfx_wallpaper = "#1d2021";
 
 /*
+ * The gap between two or more windows.
+ * This gap will also be applied to the
+ * bar for consistancy.
+ *
+ * Available options: none, low, medium high
+ * */
+const msfx_level msfx_gap = medium;
+
+/*
  * The bar you would like to choose there
  * are two options "waybar" and "i3status".
  * If you choose either of them, you have

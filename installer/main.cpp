@@ -124,19 +124,21 @@ int main() {
     }
   }
 
-  float msfx_tansparancy_val = msfxLevelToVal(msfx_transparancy, 0.3f, 0.5f, 0.7f); 
-  float msfx_tansparancy_val = msfxLevelToVal(msfx_transparancy, 0.3f, 0.5f, 0.7f); 
-  float msfx_tansparancy_val = msfxLevelToVal(msfx_transparancy, 0.3f, 0.5f, 0.7f); 
-  float msfx_tansparancy_val = msfxLevelToVal(msfx_transparancy, 0.3f, 0.5f, 0.7f); 
-  float msfx_tansparancy_val = msfxLevelToVal(msfx_transparancy, 0.3f, 0.5f, 0.7f); 
+  int msfx_gap_val = msfxLevelToVal(msfx_gap, 4, 8, 12);
+  float msfx_transparancy_val = msfxLevelToVal(msfx_transparancy, 0.3f, 0.5f, 0.7f); 
+  int msfx_blur_val = msfxLevelToVal(msfx_blur, 3, 5, 7); 
+  float msfx_corner_radius_val = msfxLevelToVal(msfx_corner_radius, 6, 12, 18); 
 
+  options.push_back({"if_swayfx", msfx_window_manager == "swayfx" ? "" : "#"});
+  options.push_back({"if_swaybar", msfx_bar == "i3status" ? "" : "#"});
   options.push_back({"wallpaper", msfx_wallpaper});
   options.push_back({"wallpaper_mode", getWallpaperMode(msfx_wallpaper)});
   options.push_back({"bar_cmd", msfx_bar == "waybar" ? "waybar" : "swaybar"});
   options.push_back({"bar_layercmd", msfx_bar == "waybar" ? "waybar" : "panel"});
-  options.push_back({"tansparancy", msfx_window_manager});
-  options.push_back({"window_manager", msfx_window_manager});
-  options.push_back({"window_manager", msfx_window_manager});
+  options.push_back({"tansparancy", std::to_string(msfx_transparancy_val)});
+  options.push_back({"tansparancy_invert", std::to_string(1.0f - msfx_transparancy_val)});
+  options.push_back({"gap", std::to_string(msfx_gap_val)});
+  options.push_back({"bar_gap", std::to_string(msfx_gap_val * 2)});
 
   for (int i = 0; i < configs.size(); i++) {
     std::string in_config_path = "config/" + configs[i];
