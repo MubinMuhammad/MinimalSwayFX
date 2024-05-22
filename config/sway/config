@@ -1,5 +1,7 @@
 font pango:~WINDOW_MANAGER_FONT ~WINDOW_MANAGER_FONT_STYLE ~WINDOW_MANAGER_FONT_SIZE
 
+msfxSet(window_manager)
+
 output * ~WALLPAPER ~WALLPAPER_MODE
 
 gaps inner ~WINDOW_GAP
