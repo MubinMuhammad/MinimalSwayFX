@@ -58,18 +58,16 @@ void formatWord(std::string &s, std::vector<std::pair<std::string, std::string>>
 }
 
 std::string getWallpaperMode(std::string wallpaper) {
-  if (wallpaper.size() != 7)
-    return "fill";
-
-  if (wallpaper[0] != '#')
+  if (wallpaper.size() != 7 || wallpaper[0] != '#')
     return "fill";
 
   for (int i = 1; i < 7; i++) {
     if (
-      (wallpaper[i] >= '\0' && wallpaper[i] < '0' ) ||
-      (wallpaper[i] >  '9'  && wallpaper[i] < 'a' ) ||
-      (wallpaper[i] >  'f'  && wallpaper[i] < 'A' ) ||
-      (wallpaper[i] >  'F'  && wallpaper[i] <= 127) 
+      !(
+        (wallpaper[i] >= '0' && wallpaper[i] <= '9') ||
+        (wallpaper[i] >= 'A' && wallpaper[i] <= 'F') ||
+        (wallpaper[i] >= 'a' && wallpaper[i] <= 'f')
+      )
     )
       return "fill";
   }
@@ -167,6 +165,7 @@ int main() {
           formatWord(word, options);
           out_line += word + ' ';
         }
+        if (out_line.size() > 0) out_line.pop_back();
 
         output_file << out_line << '\n';
       }
