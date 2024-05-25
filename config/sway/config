@@ -1,6 +1,6 @@
 font pango:~WINDOW_MANAGER_FONT ~WINDOW_MANAGER_FONT_STYLE ~WINDOW_MANAGER_FONT_SIZE
 
-msfxSet(window_manager)
+"msfxSet(window_manager)"
 msfxSet(if_swayfx)
 msfxSet(gap)
 msfxSet(bar_cmd)

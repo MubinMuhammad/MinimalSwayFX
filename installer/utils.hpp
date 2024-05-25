@@ -8,4 +8,11 @@ enum msfx_level {
   high
 };
 
+enum msfx_position {
+  // right,
+  // left,
+  top,
+  bottom
+};
+
 #endif

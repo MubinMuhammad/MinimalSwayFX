@@ -54,7 +54,7 @@ const std::string msfx_window_manager = "swayfx";
  * you're system. It includes, terminal,
  * statusbar, app menu, etc.
  *
- * TODO: yet to implement.
+ * TODO: currently in implementation.
  * */
 const std::vector<std::string> &msfx_theme = gruvbox_dark;
 
@@ -96,6 +96,16 @@ const msfx_level msfx_gap = medium;
  * 
  * */
 const std::string msfx_bar = "waybar";
+
+/*
+ * the bar position for i3status or waybar.
+ *
+ * Available options: top, bottom 
+ *
+ * TODO: 
+ *   implement right & left
+ * */
+const msfx_position msfx_bar_pos = top;
 
 /////////////// ONLY FOR SWAYFX USERS ///////////////
 /*

@@ -1,9 +1,11 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-#include <cstdlib>
 #include <string>
 #include <vector>
+
+#include <cstdlib>
+#include <cstdint>
 
 #include "../config.hpp"
 #include "utils.hpp"
@@ -15,22 +17,45 @@
   (level == high ? mx : 0))))
 
 void formatWord(std::string &s, std::vector<std::pair<std::string, std::string>> &options) {
-  if (s.size() < 8 || s.substr(0, 8) != "msfxSet(") {
+  if (s.size() < 8) {
     return;
   }
 
   std::string option_name = "";
-  std::string extension = "";
+  std::string prefix = "";
+  std::string suffix = "";
 
   int f = 0;
-  for (int i = 8; i < s.size(); i++) {
-    if (s[i] == ')') {
-      f = 1;
-      continue;
-    }
 
-    (!f ? option_name : extension).push_back(s[i]);
+  for (int i = 0; i < s.size() - 7; i++) {
+    std::string tmp = s.substr(i, 8);
+
+    if (tmp == "msfxSet(") {
+      prefix = s.substr(0, i);
+      option_name = s.substr(i + 8, s.size());
+      f = 1;
+      break;
+    }
   }
+
+  if (!f)
+    return;
+
+  f = option_name.size() - 1;
+  while (f > 0) {
+    if (option_name[f] == ')') {
+      option_name.pop_back();
+      break;
+    }
+    else {
+      suffix.push_back(option_name[f]);
+      option_name.pop_back();
+    }
+    f--;
+  }
+
+  if (!f)
+    return;
 
   f = 0;
   for (std::pair<std::string, std::string> &option : options) {
@@ -53,26 +78,57 @@ void formatWord(std::string &s, std::vector<std::pair<std::string, std::string>>
     return;
   }
 
-  option_name += extension;
+  option_name.insert(0, prefix);
+  option_name += suffix;
   s = option_name;
 }
 
-std::string getWallpaperMode(std::string wallpaper) {
-  if (wallpaper.size() != 7 || wallpaper[0] != '#')
-    return "fill";
+bool isStringHex(std::string s) {
+  if (s.size() != 7 || s[0] != '#')
+    return 0;
 
   for (int i = 1; i < 7; i++) {
-    if (
-      !(
-        (wallpaper[i] >= '0' && wallpaper[i] <= '9') ||
-        (wallpaper[i] >= 'A' && wallpaper[i] <= 'F') ||
-        (wallpaper[i] >= 'a' && wallpaper[i] <= 'f')
-      )
-    )
-      return "fill";
+    if (!((s[i] >= '0' && s[i] <= '9') ||
+          (s[i] >= 'A' && s[i] <= 'F') ||
+          (s[i] >= 'a' && s[i] <= 'f')))
+      return 0;
   }
 
-  return "solid_color";
+  return 1;
+}
+
+int hexCharToNum(char c) {
+  char k = 0;
+
+  if (c >= '0' && c <= '9')
+    k = '0';
+  else if (c >= 'a' && c <= 'f')
+    k = 'a' + 10;
+  else if (c >= 'A' && c <= 'F')
+    k = 'A' + 10;
+
+  return c - k;
+}
+
+std::string getWallpaperMode(std::string wallpaper) {
+  return isStringHex(wallpaper) ? "solid_color" : "fill";
+}
+
+std::string hexToRGBA(std::string s, int alpha) {
+  if (!isStringHex(s))
+    return "INVALID_HEX";
+
+
+  uint8_t r = hexCharToNum(s[2]) * 16 + hexCharToNum(s[3]);
+  uint8_t g = hexCharToNum(s[4]) * 16 + hexCharToNum(s[5]);
+  uint8_t b = hexCharToNum(s[6]) * 16 + hexCharToNum(s[7]);
+
+  return 
+    "rgba(" +
+    std::to_string(r) + ", " +
+    std::to_string(g) + ", " +
+    std::to_string(b) + ", " +
+    std::to_string(alpha) + ")";
 }
 
 int main() {
@@ -95,6 +151,12 @@ int main() {
     // "fish/config.fish"
   };
 
+  int msfx_gap_val = msfxLevelToVal(msfx_gap, 4, 8, 12);
+  float msfx_transparancy_val = msfxLevelToVal(msfx_transparancy, 0.3f, 0.5f, 0.7f); 
+  int msfx_blur_val = msfxLevelToVal(msfx_blur, 3, 5, 7); 
+  float msfx_corner_radius_val = msfxLevelToVal(msfx_corner_radius, 6, 12, 18); 
+  std::string msfx_bar_pos_val = msfx_bar_pos == bottom ? "bottom" : "top";
+
   std::vector<std::pair<std::string, std::string>> options;
 
   options.push_back({"window_manager", msfx_window_manager});
@@ -110,6 +172,10 @@ int main() {
         "color_" + color_names[i] + std::to_string(j + 1),
         msfx_theme[4 * i + j]
       });
+      options.push_back({
+        "color_" + color_names[i] + std::to_string(j + 1) + "_rgba",
+        hexToRGBA(msfx_theme[4 * i + j], 255 * (1.0f - msfx_transparancy_val))
+      });
     }
   }
 
@@ -119,24 +185,35 @@ int main() {
         "color_" + color_names[i] + std::to_string(j + 1),
         msfx_theme[(2 * i + 4) + j]
       });
+      options.push_back({
+        "color_" + color_names[i] + std::to_string(j + 1) + "_rgba",
+        hexToRGBA(msfx_theme[2 * i + 4], 255 * (1.0f - msfx_transparancy_val))
+      });
     }
   }
-
-  int msfx_gap_val = msfxLevelToVal(msfx_gap, 4, 8, 12);
-  float msfx_transparancy_val = msfxLevelToVal(msfx_transparancy, 0.3f, 0.5f, 0.7f); 
-  int msfx_blur_val = msfxLevelToVal(msfx_blur, 3, 5, 7); 
-  float msfx_corner_radius_val = msfxLevelToVal(msfx_corner_radius, 6, 12, 18); 
 
   options.push_back({"if_swayfx", msfx_window_manager == "swayfx" ? "" : "#"});
   options.push_back({"if_swaybar", msfx_bar == "i3status" ? "" : "#"});
   options.push_back({"wallpaper", msfx_wallpaper});
   options.push_back({"wallpaper_mode", getWallpaperMode(msfx_wallpaper)});
+  options.push_back({"gap", std::to_string(msfx_gap_val)});
+  options.push_back({"bar_gap_right", msfx_bar_pos_val == "left" ? "0" : std::to_string(msfx_gap_val * 2)});
+  options.push_back({"bar_gap_left", msfx_bar_pos_val == "right" ? "0" : std::to_string(msfx_gap_val * 2)});
+  options.push_back({"bar_gap_top", msfx_bar_pos_val == "bottom" ? "0" : std::to_string(msfx_gap_val * 2)});
+  options.push_back({"bar_gap_bottom", msfx_bar_pos_val == "top" ? "0" : std::to_string(msfx_gap_val * 2)});
   options.push_back({"bar_cmd", msfx_bar == "waybar" ? "waybar" : "swaybar"});
   options.push_back({"bar_layercmd", msfx_bar == "waybar" ? "waybar" : "panel"});
+  options.push_back({"bar_position", msfx_bar_pos_val});
   options.push_back({"tansparancy", std::to_string(msfx_transparancy_val)});
   options.push_back({"tansparancy_invert", std::to_string(1.0f - msfx_transparancy_val)});
-  options.push_back({"gap", std::to_string(msfx_gap_val)});
-  options.push_back({"bar_gap", std::to_string(msfx_gap_val * 2)});
+  options.push_back({"blur", std::to_string(msfx_blur_val)});
+  options.push_back({"is_blur", msfx_blur_val != 0 && msfx_transparancy_val != 0.0f ? "enable" : "disable"});
+  options.push_back({"is_shadow", msfx_shadow == false ? "disable" : "enable"});
+  options.push_back({"corner_radius", std::to_string(msfx_corner_radius_val)});
+
+  for (const auto io : options) {
+    std::cout << io.first << ": " << io.second << '\n';
+  }
 
   for (int i = 0; i < configs.size(); i++) {
     std::string in_config_path = "config/" + configs[i];
