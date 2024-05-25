@@ -43,16 +43,15 @@ void formatWord(std::string &s, std::vector<std::pair<std::string, std::string>>
 
   f = option_name.size() - 1;
   while (f > 0) {
-    if (option_name[f] == ')') {
-      option_name.pop_back();
+    if (option_name[f] == ')')
       break;
-    }
-    else {
+    else
       suffix.push_back(option_name[f]);
-      option_name.pop_back();
-    }
+
+    option_name.pop_back();
     f--;
   }
+  option_name.pop_back();
 
   if (!f)
     return;
