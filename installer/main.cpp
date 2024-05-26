@@ -97,16 +97,13 @@ bool isStringHex(std::string s) {
 }
 
 int hexCharToNum(char c) {
-  char k = 0;
+  int k = c;
+  
+  if (c >= '0' && c <= '9') k -= '0';
+  else if (c >= 'a' && c <= 'f') k -= 'a' - 10;
+  else if (c >= 'A' && c <= 'F') k -= 'A' - 10;
 
-  if (c >= '0' && c <= '9')
-    k = '0';
-  else if (c >= 'a' && c <= 'f')
-    k = 'a' + 10;
-  else if (c >= 'A' && c <= 'F')
-    k = 'A' + 10;
-
-  return c - k;
+  return k;
 }
 
 std::string getWallpaperMode(std::string wallpaper) {
@@ -117,10 +114,9 @@ std::string hexToRGBA(std::string s, int alpha) {
   if (!isStringHex(s))
     return "INVALID_HEX";
 
-
-  uint8_t r = hexCharToNum(s[2]) * 16 + hexCharToNum(s[3]);
-  uint8_t g = hexCharToNum(s[4]) * 16 + hexCharToNum(s[5]);
-  uint8_t b = hexCharToNum(s[6]) * 16 + hexCharToNum(s[7]);
+  uint8_t r = hexCharToNum(s[1]) * 16 + hexCharToNum(s[2]);
+  uint8_t g = hexCharToNum(s[3]) * 16 + hexCharToNum(s[4]);
+  uint8_t b = hexCharToNum(s[5]) * 16 + hexCharToNum(s[6]);
 
   return 
     "rgba(" +
@@ -145,7 +141,7 @@ int main() {
     // "i3status/config.toml",
     // "tofi/config",
     // "mako/config",
-    // "alacritty/alacritty.toml",
+    "alacritty/alacritty.toml",
     // "neofetch/config.conf",
     // "fish/config.fish"
   };
@@ -186,7 +182,7 @@ int main() {
       });
       options.push_back({
         "color_" + color_names[i] + std::to_string(j + 1) + "_rgba",
-        hexToRGBA(msfx_theme[2 * i + 4], 255 * (1.0f - msfx_transparancy_val))
+        hexToRGBA(msfx_theme[2 * i + 4 + j], 255 * (1.0f - msfx_transparancy_val))
       });
     }
   }
@@ -203,16 +199,12 @@ int main() {
   options.push_back({"bar_cmd", msfx_bar == "waybar" ? "waybar" : "swaybar"});
   options.push_back({"bar_layercmd", msfx_bar == "waybar" ? "waybar" : "panel"});
   options.push_back({"bar_position", msfx_bar_pos_val});
-  options.push_back({"tansparancy", std::to_string(msfx_transparancy_val)});
-  options.push_back({"tansparancy_invert", std::to_string(1.0f - msfx_transparancy_val)});
+  options.push_back({"transparancy", std::to_string(msfx_transparancy_val)});
+  options.push_back({"transparancy_invert", std::to_string(1.0f - msfx_transparancy_val)});
   options.push_back({"blur", std::to_string(msfx_blur_val)});
   options.push_back({"is_blur", msfx_blur_val != 0 && msfx_transparancy_val != 0.0f ? "enable" : "disable"});
   options.push_back({"is_shadow", msfx_shadow == false ? "disable" : "enable"});
   options.push_back({"corner_radius", std::to_string(msfx_corner_radius_val)});
-
-  for (const auto io : options) {
-    std::cout << io.first << ": " << io.second << '\n';
-  }
 
   for (int i = 0; i < configs.size(); i++) {
     std::string in_config_path = "config/" + configs[i];
@@ -253,7 +245,6 @@ int main() {
       std::cout << "failed to read " << in_config_path  << "!" << '\n';
     }
   }
-
 
   return 0;
 }

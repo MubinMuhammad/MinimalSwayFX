@@ -50,6 +50,26 @@
 const std::string msfx_window_manager = "swayfx";
 
 /*
+ * the name of font that should be used
+ * through out the system. Better to
+ * choose a nerd font.
+ * */
+const std::string msfx_font = "swayfx";
+
+/*
+ * choose the font weight for the font.
+ * Usually they are ["thin", "regular", "medium", "bold"]
+ * */
+const std::string msfx_font_weight = "bold";
+
+/*
+ * the font size to use.
+ * normal arithmatic can be applied here.
+ * but make sure to not put negative values.
+ * */
+const unsigned int msfx_font_size = 14;
+
+/*
  * The theme you want to use through-out
  * you're system. It includes, terminal,
  * statusbar, app menu, etc.
@@ -74,7 +94,7 @@ const std::string msfx_wallpaper = "#1d2021";
  * This gap will also be applied to the
  * bar for consistancy.
  *
- * Available options: none, low, medium high
+ * Available options: [none, low, medium, high]
  * */
 const msfx_level msfx_gap = medium;
 
