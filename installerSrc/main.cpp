@@ -6,6 +6,7 @@
 
 #include <cstdlib>
 #include <cstdint>
+#include <cstring>
 
 #include "../config.hpp"
 #include "utils.hpp"
@@ -126,8 +127,43 @@ std::string hexToRGBA(std::string s, int alpha) {
     std::to_string(alpha) + ")";
 }
 
-int main() {
-  system("clear");
+int main(int argc, char *argv[]) {
+  std::vector<std::string> desired_options = {
+    "grand", "minimal"
+  };
+  std::string desired_option;
+
+  if (argc == 1) {
+    std::cout << "\033[1;31merror:\033[0m" << " no desired theme provided!" << '\n'
+              << "desired options are:" << '\n';
+
+    for (int i = 0; i < desired_options.size(); i++) {
+      std::cout << "  " << "\033[1;36m*\033[0m" << " " << desired_options[i] << '\n';
+    }
+
+    return 1;
+  }
+  else {
+    desired_option = argv[1];
+
+    bool f = 0;
+    for (int i = 0; i < desired_options.size(); i++) {
+      if (desired_option == desired_options[i]) {
+        f = 1;
+        break;
+      }
+    }
+
+    if (!f) {
+      std::cout << "\033[1;31merror:\033[0m" << " unknown desired theme provided!" << '\n'
+                << "desired options are:" << '\n';
+
+      for (int i = 0; i < desired_options.size(); i++) {
+        std::cout << "  " << "\033[1;36m*\033[0m" << " " << desired_options[i] << '\n';
+      }
+      return 1;
+    }
+  }
 
   const std::vector<std::string> configs = {
     "sway/config",
@@ -188,10 +224,13 @@ int main() {
   }
 
   options.push_back({"if_swayfx", msfx_window_manager == "swayfx" ? "" : "#"});
-  options.push_back({"if_swaybar", msfx_bar == "i3status" ? "" : "#"});
+  options.push_back({"font", msfx_font});
+  options.push_back({"font_style", msfx_font_style});
+  options.push_back({"font_size", std::to_string(msfx_font_size)});
   options.push_back({"wallpaper", msfx_wallpaper});
   options.push_back({"wallpaper_mode", getWallpaperMode(msfx_wallpaper)});
   options.push_back({"gap", std::to_string(msfx_gap_val)});
+  options.push_back({"if_swaybar", msfx_bar == "i3status" ? "" : "#"});
   options.push_back({"bar_gap_right", msfx_bar_pos_val == "left" ? "0" : std::to_string(msfx_gap_val * 2)});
   options.push_back({"bar_gap_left", msfx_bar_pos_val == "right" ? "0" : std::to_string(msfx_gap_val * 2)});
   options.push_back({"bar_gap_top", msfx_bar_pos_val == "bottom" ? "0" : std::to_string(msfx_gap_val * 2)});

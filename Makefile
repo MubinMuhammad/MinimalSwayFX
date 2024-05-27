@@ -1,14 +1,11 @@
 COMPILER := g++
-FILES := ./installer/main.cpp
-EXE := _installer_
+FILES := ./installerSrc/main.cpp
+EXE := installer
 
 compile:
 	$(COMPILER) -o $(EXE) $(FILES)
 
 all: compile
-
-run: compile
-	./$(EXE)
 
 clean:
 	rm -fr *.txt ./*.cpp

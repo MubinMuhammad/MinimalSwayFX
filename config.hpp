@@ -32,12 +32,12 @@
 #ifndef _CONFIG_HPP_
 #define _CONFIG_HPP_
 
-/////////////////DON'T EDIT//////////////////
-#include <string>               /////////////
-#include <vector>               /////////////
-#include "installer/utils.hpp"  /////////////
-#include "installer/colors.hpp" /////////////
-/////////////////////////////////////////////
+/////////////////DON'T EDIT/////////////////////
+#include <string>                  /////////////
+#include <vector>                  /////////////
+#include "installerSrc/utils.hpp"  /////////////
+#include "installerSrc/colors.hpp" /////////////
+////////////////////////////////////////////////
 
 /*
  * The window manager you are using.
@@ -54,13 +54,13 @@ const std::string msfx_window_manager = "swayfx";
  * through out the system. Better to
  * choose a nerd font.
  * */
-const std::string msfx_font = "swayfx";
+const std::string msfx_font = "CaskaydiaCove Nerd Font";
 
 /*
  * choose the font weight for the font.
  * Usually they are ["thin", "regular", "medium", "bold"]
  * */
-const std::string msfx_font_weight = "bold";
+const std::string msfx_font_style = "bold";
 
 /*
  * the font size to use.
