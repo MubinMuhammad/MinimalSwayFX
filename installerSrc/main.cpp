@@ -1,4 +1,6 @@
 #include <iostream>
+#include <algorithm>
+#include <filesystem>
 #include <sstream>
 #include <fstream>
 #include <string>
@@ -12,8 +14,8 @@
 #include "utils.hpp"
 #include "colors.hpp"
 
-#define msfxLevelToVal(level, mn, md, mx) (\
-  (level == low ? mn : \
+#define msfxLevelToVal(level, mn, md, mx) \
+  ((level == low ? mn : \
   (level == medium ? md : \
   (level == high ? mx : 0))))
 
@@ -53,6 +55,7 @@ void formatWord(std::string &s, std::vector<std::pair<std::string, std::string>>
     f--;
   }
   option_name.pop_back();
+  std::reverse(suffix.begin(), suffix.end());
 
   if (!f)
     return;
@@ -111,7 +114,7 @@ std::string getWallpaperMode(std::string wallpaper) {
   return isStringHex(wallpaper) ? "solid_color" : "fill";
 }
 
-std::string hexToRGBA(std::string s, int alpha) {
+std::string hexToRGBA(std::string s, float alpha) {
   if (!isStringHex(s))
     return "INVALID_HEX";
 
@@ -128,28 +131,22 @@ std::string hexToRGBA(std::string s, int alpha) {
 }
 
 int main(int argc, char *argv[]) {
-  const std::vector<std::string> configs = {
-    "sway/config",
-
-    /*
-     * below is commented
-     * for testing purposes.
-     * */
-    // "waybar/config.jsonc",
-    // "waybar/style.css",
-    // "i3status/config.toml",
-    // "tofi/config",
-    // "mako/config",
-    "alacritty/alacritty.toml",
-    // "neofetch/config.conf",
-    // "fish/config.fish"
+  const std::vector<std::pair<std::string, std::string>> configs = {
+    {"sway", "config"},
+    {"waybar", "config.jsonc"},
+    {"waybar", "style.css"},
+    {"i3status", "config.toml"},
+    {"tofi", "config"},
+    {"mako", "config"},
+    {"alacritty", "alacritty.toml"},
+    {"fish", "config.fish"}
   };
 
   int msfx_border_val = msfxLevelToVal(msfx_border, 2, 4, 8);
   int msfx_gap_val = msfxLevelToVal(msfx_gap, 4, 8, 12);
   float msfx_transparency_val = msfxLevelToVal(msfx_transparency, 0.3f, 0.5f, 0.7f); 
   int msfx_blur_val = msfxLevelToVal(msfx_blur, 3, 5, 7); 
-  int msfx_corner_radius_val = msfxLevelToVal(msfx_corner_radius, 6, 12, 18); 
+  int msfx_corner_radius_val = msfxLevelToVal(msfx_corner_radius, 4, 8, 16); 
   std::string msfx_bar_pos_val = msfx_bar_pos == bottom ? "bottom" : "top";
 
   std::vector<std::pair<std::string, std::string>> options;
@@ -173,7 +170,7 @@ int main(int argc, char *argv[]) {
         hexToRGBA(msfx_theme[4 * i + j], (1.0f - msfx_transparency_val))
       });
 
-      snprintf(tmp_char_arr, 128, "%.2X", (int)(255 * (1.0f - msfx_transparency_val)));
+      snprintf(tmp_char_arr, 128, "%.2x", (int)(255 * (1.0f - msfx_transparency_val)));
       tmp_str = msfx_theme[4 * i + j] + tmp_char_arr;
       options.push_back({ "color_" + color_names[i] + std::to_string(j + 1) + "_a", tmp_str });
       memset(tmp_char_arr, '\0', sizeof(tmp_char_arr));
@@ -189,7 +186,7 @@ int main(int argc, char *argv[]) {
         hexToRGBA(msfx_theme[2 * i + 4 + j], (1.0f - msfx_transparency_val))
       });
 
-      snprintf(tmp_char_arr, 128, "%.2X", (int)(255 * (1.0f - msfx_transparency_val)));
+      snprintf(tmp_char_arr, 128, "%.2x", (int)(255 * (1.0f - msfx_transparency_val)));
       tmp_str = msfx_theme[2 * i + 4 + j] + tmp_char_arr;
       options.push_back({ "color_" + color_names[i] + std::to_string(j + 1) + "_a", tmp_str });
       memset(tmp_char_arr, '\0', sizeof(tmp_char_arr));
@@ -222,14 +219,16 @@ int main(int argc, char *argv[]) {
   options.push_back({"corner_radius", std::to_string(msfx_corner_radius_val)});
 
   for (int i = 0; i < configs.size(); i++) {
-    std::string in_config_path = "config/" + configs[i];
-    /*
-     * below is commented
-     * for testing purposes.
-     * */
-    // std::string out_config_path(getenv("HOME"));
-    // out_config_path += "/.config/" + configs[i];
-    std::string out_config_path = "./Tconfig/" + configs[i];
+    std::string in_config_path = "config/" + configs[i].first + configs[i].second;
+
+    std::string out_config_path(getenv("HOME"));
+
+    out_config_path += configs[i].first;
+
+    if (!std::filesystem::is_directory(out_config_path))
+      std::filesystem::create_directory(out_config_path);
+
+    out_config_path += configs[i].second;
 
     std::ifstream input_file;
     std::ofstream output_file;

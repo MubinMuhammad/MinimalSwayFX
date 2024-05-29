@@ -1,4 +1,9 @@
-font=CaskaydiaCove nerd font
-padding=8
-border-size=2
-border-radius=6
+font=msfxSet(font) msfxSet(font_style) msfxSet(font_size)
+background-color=msfxSet(color_bg2)
+text-color=msfxSet(color_fg2)
+border-size=msfxSet(border)
+border-color=msfxSet(color_bg1)
+border-radius=msfxSet(corner_radius)
+icons=0
+text-alignment=center
+default-timeout=5000

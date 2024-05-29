@@ -23,11 +23,11 @@ cyan    = 'msfxSet(color_aqua2)'
 white   = 'msfxSet(color_fg4)'
 
 [font]
-size = 12
+size = msfxSet(font_size)
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font"
-style = "bold"
+family = "msfxSet(font)"
+style = "msfxSet(font_style)"
 
 [shell]
 program = "/bin/fish"

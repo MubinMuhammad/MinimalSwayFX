@@ -14,8 +14,8 @@ default_floating_border pixel 2
  blur_passes 5
  blur_radius 5
  shadows enable
- corner_radius 12
- layer_effects "waybar" shadows enable; corner_radius 12; blur enable
+ corner_radius 8
+ layer_effects "waybar" shadows enable; corner_radius 8; blur enable
 
 bar {
 swaybar_command waybar
@@ -26,9 +26,9 @@ swaybar_command waybar
 # height ~BAR_HEIGHT
 # font pango:CaskaydiaCove Nerd Font bold 14
 # colors {
-# background #1d20217F
-# focused_workspace #b8bb267F #98971a7F #1d20217F
-# inactive_workspace #2828287F #1d20217F #ebdbb27F
+# background #1d20217f
+# focused_workspace #b8bb267f #98971a7f #1d20217f
+# inactive_workspace #2828287f #1d20217f #e6d19e7f
 # }
 }
 

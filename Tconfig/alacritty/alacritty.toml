@@ -1,6 +1,6 @@
 [colors.primary]
 background = '#282828'
-foreground = '#fbf1c7'
+foreground = '#f2e5bc'
 
 [colors.normal]
 black = '#32302f'
@@ -10,7 +10,7 @@ yellow = '#d79921'
 blue = '#458588'
 magenta = '#b16286'
 cyan = '#689d6a'
-white = '#f2e5bc'
+white = '#ebdbb2'
 
 [colors.bright]
 black = '#3c3836'
@@ -20,10 +20,10 @@ yellow = '#fabd2f'
 blue = '#83a598'
 magenta = '#d3869b'
 cyan = '#8ec07c'
-white = '#f9f5d7'
+white = '#fbf1c7'
 
 [font]
-size = 12
+size = 14
 
 [font.normal]
 family = "CaskaydiaCove Nerd Font"

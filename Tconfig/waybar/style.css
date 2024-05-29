@@ -1,65 +1,83 @@
 * {
-  border: none;
-  border-radius: 0;
-  min-height: 0;
-  font-family: CaskaydiaCove Nerd font;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 0;
+border: none;
+border-radius: 0;
+min-height: 0;
+font-family: CaskaydiaCove Nerd Font;
+font-weight: bold;
+font-size: 14px;
+padding: 0;
 }
 
 window#waybar {
-	background: @bg;
+background: rgba(40, 40, 40, 0.500000);
+border: 2px solid rgba(50, 48, 47, 0.500000);
 }
 
 #workspaces {
-  background-color: transparent;
+background-color: rgba(50, 48, 47, 0.500000);
 }
 
 #workspaces button {
-  all: initial; /* Remove GTK theme values (waybar #1351) */
-  min-width: 0; /* Fix weird spacing in materia (waybar #450) */
-  box-shadow: inset 0 -3px transparent; /* Use box-shadow instead of border so the text isn't offset */
-  margin: 8px 0px;
-  margin-left: 12px;
-  color: @fg1;
+all: initial; /* Remove GTK theme values (waybar #1351) */
+min-width: 0; /* Fix weird spacing in materia (waybar #450) */
+box-shadow: inset 0 -3px transparent; /* Use box-shadow instead of border so the text isn't offset */
+margin: 4px 0px;
+margin-left: 12px;
+color: #ebdbb2;
 }
 
 #workspaces button.focused {
-  color: @fg;
+color: #f2e5bc;
 }
 
 #workspaces button.urgent {
-  background-color: @orange;
+background-color: #d65d0e;
 }
 
 #battery,
-#backlight,
 #network,
 #clock,
 #tray,
 #pulseaudio {
-  margin: 4px 0px;
-  margin-right: 12px;
-  background-color: transparent;
-  color: @fg;
+margin: 4px;
+padding: 4px 0px;
+border-radius: 8;
+}
+
+#battery {
+background-color: #98971a;
+border: 2px solid #b8bb26;
+color: #282828;
+}
+
+#network {
+background-color: #b16286;
+border: 2px solid #d3869b;
+color: #ebdbb2;
+}
+
+#clock {
+background-color: #32302f;
+border: 2px solid #3c3836;
+color: #ebdbb2;
+}
+
+#tray {
+background-color: #d65d0e;
+border: 2px solid #fe8019;
+color: #282828;
+}
+
+#pulseaudio {
+background-color: #d79921;
+border: 2px solid #fabd2f;
+color: #282828;
 }
 
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-  color: @red;
-  animation-direction: alternate;
-  background-color: transparent;
-}
-
-#battery.charging {
-  color: @green;
-  background-color: transparent;
-}
-
-tooltip {
-  padding: 15px;
-  background-color: @bg;
-  color: @fg1;
+color: #282828;
+background-color: #cc241d;
+border: 2px solid #32302f;
 }

@@ -2,6 +2,10 @@
   "layer": "top",
   "spacing": 0,
   "height": 0,
+  "margin-top": "msfxSet(bar_gap_top)",
+  "margin-right": "msfxSet(bar_gap_right)",
+  "margin-bottom": "msfxSet(bar_gap_bottom)",
+  "margin-left": "msfxSet(bar_gap_left)",
 
   "modules-left": [
     "sway/workspaces"
@@ -20,22 +24,26 @@
 
   "sway/workspaces": {
     "disable-scroll": true,
-    "all-outputs": true
+    "all-outputs": true,
+    "tooltip": false
   },
 
   "tray": {
-    "spacing": 10
+    "spacing": 10,
+    "tooltip": false
   },
 
   "clock": {
-    "format": "{:%I:%M %p - %a, %d %b %Y}"
+    "format": "{:%I:%M %p - %a, %d %b %Y}",
+    "tooltip": false
   },
   
   "network": {
     "format-wifi" : "󰤢 {bandwidthDownBits}",
     "format-ethernet": "󰤢 {bandwidthDownBits}",
     "format-disconnected" : "󰤠 No Network",
-    "interval": 5
+    "interval": 5,
+    "tooltip": false
   },
 
   "pulseaudio": {
@@ -46,7 +54,8 @@
     "format-icons": ["", "", " "],
     "nospacing": 1,
     "format-muted": " ",
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol",
+    "tooltip": false
   },
 
   "battery": {

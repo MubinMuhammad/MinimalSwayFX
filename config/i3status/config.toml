@@ -1,18 +1,19 @@
-icons_format = "{icon}"
-
 [theme]
 theme = "plain"
+
 [theme.overrides]
 separator = ""
-idle_bg = "#050505"
-idle_fg = "#e8dab2"
-good_bg = { link = "idle_bg" }
+idle_bg = "msfxSet(color_bg2)"
+idle_fg = "msfxSet(color_fg2)"
+good_bg = "msfxSet(color_green1)"
 
 [icons]
 icons = "material-nf"
+icons_format = "{icon}"
 
 [[block]]
 block = "sound"
+
 [[block.click]]
 button = "left"
 cmd = "pavucontrol"

@@ -1,63 +1,72 @@
 {
-  "layer": "top",
-  "spacing": 0,
-  "height": 0,
+"layer": "top",
+"spacing": 0,
+"height": 0,
+"margin-top": "16",
+"margin-right": "16",
+"margin-bottom": "0",
+"margin-left": "16",
 
-  "modules-left": [
-    "sway/workspaces"
-  ],
+"modules-left": [
+"sway/workspaces"
+],
 
-  "modules-center": [
-    "clock"
-  ],
+"modules-center": [
+"clock"
+],
 
-  "modules-right": [
-    "tray",
-    "network",
-    "battery",
-    "pulseaudio"
-  ],
+"modules-right": [
+"tray",
+"network",
+"battery",
+"pulseaudio"
+],
 
-  "sway/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true
-  },
+"sway/workspaces": {
+"disable-scroll": true,
+"all-outputs": true,
+"tooltip": false
+},
 
-  "tray": {
-    "spacing": 10
-  },
+"tray": {
+"spacing": 10,
+"tooltip": false
+},
 
-  "clock": {
-    "format": "{:%I:%M %p - %a, %d %b %Y}"
-  },
-  
-  "network": {
-    "format-wifi" : "󰤢 {bandwidthDownBits}",
-    "format-ethernet": "󰤢 {bandwidthDownBits}",
-    "format-disconnected" : "󰤠 No Network",
-    "interval": 5
-  },
+"clock": {
+"format": "{:%I:%M %p - %a, %d %b %Y}",
+"tooltip": false
+},
 
-  "pulseaudio": {
-    "scroll-step": 5,
-    "max-volume": 150,
-    "format": "{icon} {volume}%",
-    "format-bluetooth": "{icon} {volume}%",
-    "format-icons": ["", "", " "],
-    "nospacing": 1,
-    "format-muted": " ",
-    "on-click": "pavucontrol"
-  },
+"network": {
+"format-wifi" : "󰤢 {bandwidthDownBits}",
+"format-ethernet": "󰤢 {bandwidthDownBits}",
+"format-disconnected" : "󰤠 No Network",
+"interval": 5,
+"tooltip": false
+},
 
-  "battery": {
-    "format": "{icon} {capacity}%",
-    "interval": 5,
-    "states": {
-      "warning": 20,
-      "critical": 10
-    },
+"pulseaudio": {
+"scroll-step": 5,
+"max-volume": 150,
+"format": "{icon} {volume}%",
+"format-bluetooth": "{icon} {volume}%",
+"format-icons": ["", "", " "],
+"nospacing": 1,
+"format-muted": " ",
+"on-click": "pavucontrol",
+"tooltip": false
+},
 
-    "format-icons": ["", "", "", "", ""],
-    "tooltip": false
-  }
+"battery": {
+"format": "{icon} {capacity}%",
+"interval": 5,
+"states": {
+"warning": 20,
+"critical": 10
+},
+
+"format-icons": ["", "", "", "", ""],
+"tooltip": false
+}
 }
