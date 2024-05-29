@@ -1,0 +1,40 @@
+[colors.primary]
+background = '#282828'
+foreground = '#fbf1c7'
+
+[colors.normal]
+black = '#32302f'
+red = '#cc241d'
+green = '#98971a'
+yellow = '#d79921'
+blue = '#458588'
+magenta = '#b16286'
+cyan = '#689d6a'
+white = '#f2e5bc'
+
+[colors.bright]
+black = '#3c3836'
+red = '#fb4934'
+green = '#b8bb26'
+yellow = '#fabd2f'
+blue = '#83a598'
+magenta = '#d3869b'
+cyan = '#8ec07c'
+white = '#f9f5d7'
+
+[font]
+size = 12
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font"
+style = "bold"
+
+[shell]
+program = "/bin/fish"
+
+[window]
+opacity = 0.500000
+
+[window.padding]
+x = 20
+y = 20

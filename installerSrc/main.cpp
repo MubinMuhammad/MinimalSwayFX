@@ -128,43 +128,6 @@ std::string hexToRGBA(std::string s, int alpha) {
 }
 
 int main(int argc, char *argv[]) {
-  std::vector<std::string> desired_options = {
-    "grand", "minimal"
-  };
-  std::string desired_option;
-
-  if (argc == 1) {
-    std::cout << "\033[1;31merror:\033[0m" << " no desired theme provided!" << '\n'
-              << "desired options are:" << '\n';
-
-    for (int i = 0; i < desired_options.size(); i++) {
-      std::cout << "  " << "\033[1;36m*\033[0m" << " " << desired_options[i] << '\n';
-    }
-
-    return 1;
-  }
-  else {
-    desired_option = argv[1];
-
-    bool f = 0;
-    for (int i = 0; i < desired_options.size(); i++) {
-      if (desired_option == desired_options[i]) {
-        f = 1;
-        break;
-      }
-    }
-
-    if (!f) {
-      std::cout << "\033[1;31merror:\033[0m" << " unknown desired theme provided!" << '\n'
-                << "desired options are:" << '\n';
-
-      for (int i = 0; i < desired_options.size(); i++) {
-        std::cout << "  " << "\033[1;36m*\033[0m" << " " << desired_options[i] << '\n';
-      }
-      return 1;
-    }
-  }
-
   const std::vector<std::string> configs = {
     "sway/config",
 
@@ -182,10 +145,11 @@ int main(int argc, char *argv[]) {
     // "fish/config.fish"
   };
 
+  int msfx_border_val = msfxLevelToVal(msfx_border, 2, 4, 8);
   int msfx_gap_val = msfxLevelToVal(msfx_gap, 4, 8, 12);
-  float msfx_transparancy_val = msfxLevelToVal(msfx_transparancy, 0.3f, 0.5f, 0.7f); 
+  float msfx_transparency_val = msfxLevelToVal(msfx_transparency, 0.3f, 0.5f, 0.7f); 
   int msfx_blur_val = msfxLevelToVal(msfx_blur, 3, 5, 7); 
-  float msfx_corner_radius_val = msfxLevelToVal(msfx_corner_radius, 6, 12, 18); 
+  int msfx_corner_radius_val = msfxLevelToVal(msfx_corner_radius, 6, 12, 18); 
   std::string msfx_bar_pos_val = msfx_bar_pos == bottom ? "bottom" : "top";
 
   std::vector<std::pair<std::string, std::string>> options;
@@ -197,29 +161,38 @@ int main(int argc, char *argv[]) {
     "orange", "blue", "aqua", "purple"
   };
 
+  char tmp_char_arr[128];
+  std::string tmp_str;
+
   for (int i = 0; i < 2; i++) {
     for (int j = 0; j < 4; j++) {
-      options.push_back({
-        "color_" + color_names[i] + std::to_string(j + 1),
-        msfx_theme[4 * i + j]
-      });
+      options.push_back({ "color_" + color_names[i] + std::to_string(j + 1), msfx_theme[4 * i + j] });
+
       options.push_back({
         "color_" + color_names[i] + std::to_string(j + 1) + "_rgba",
-        hexToRGBA(msfx_theme[4 * i + j], 255 * (1.0f - msfx_transparancy_val))
+        hexToRGBA(msfx_theme[4 * i + j], (1.0f - msfx_transparency_val))
       });
+
+      snprintf(tmp_char_arr, 128, "%.2X", (int)(255 * (1.0f - msfx_transparency_val)));
+      tmp_str = msfx_theme[4 * i + j] + tmp_char_arr;
+      options.push_back({ "color_" + color_names[i] + std::to_string(j + 1) + "_a", tmp_str });
+      memset(tmp_char_arr, '\0', sizeof(tmp_char_arr));
     }
   }
 
   for (int i = 2; i < color_names.size(); i++) {
     for (int j = 0; j < 2; j++) {
-      options.push_back({
-        "color_" + color_names[i] + std::to_string(j + 1),
-        msfx_theme[(2 * i + 4) + j]
-      });
+      options.push_back({ "color_" + color_names[i] + std::to_string(j + 1), msfx_theme[(2 * i + 4) + j] });
+
       options.push_back({
         "color_" + color_names[i] + std::to_string(j + 1) + "_rgba",
-        hexToRGBA(msfx_theme[2 * i + 4 + j], 255 * (1.0f - msfx_transparancy_val))
+        hexToRGBA(msfx_theme[2 * i + 4 + j], (1.0f - msfx_transparency_val))
       });
+
+      snprintf(tmp_char_arr, 128, "%.2X", (int)(255 * (1.0f - msfx_transparency_val)));
+      tmp_str = msfx_theme[2 * i + 4 + j] + tmp_char_arr;
+      options.push_back({ "color_" + color_names[i] + std::to_string(j + 1) + "_a", tmp_str });
+      memset(tmp_char_arr, '\0', sizeof(tmp_char_arr));
     }
   }
 
@@ -229,8 +202,10 @@ int main(int argc, char *argv[]) {
   options.push_back({"font_size", std::to_string(msfx_font_size)});
   options.push_back({"wallpaper", msfx_wallpaper});
   options.push_back({"wallpaper_mode", getWallpaperMode(msfx_wallpaper)});
+  options.push_back({"border", std::to_string(msfx_border_val)});
   options.push_back({"gap", std::to_string(msfx_gap_val)});
   options.push_back({"if_swaybar", msfx_bar == "i3status" ? "" : "#"});
+  options.push_back({"swaybar_height", std::to_string(msfx_font_size + 8)});
   options.push_back({"bar_gap_right", msfx_bar_pos_val == "left" ? "0" : std::to_string(msfx_gap_val * 2)});
   options.push_back({"bar_gap_left", msfx_bar_pos_val == "right" ? "0" : std::to_string(msfx_gap_val * 2)});
   options.push_back({"bar_gap_top", msfx_bar_pos_val == "bottom" ? "0" : std::to_string(msfx_gap_val * 2)});
@@ -238,10 +213,11 @@ int main(int argc, char *argv[]) {
   options.push_back({"bar_cmd", msfx_bar == "waybar" ? "waybar" : "swaybar"});
   options.push_back({"bar_layercmd", msfx_bar == "waybar" ? "waybar" : "panel"});
   options.push_back({"bar_position", msfx_bar_pos_val});
-  options.push_back({"transparancy", std::to_string(msfx_transparancy_val)});
-  options.push_back({"transparancy_invert", std::to_string(1.0f - msfx_transparancy_val)});
+  options.push_back({"transparency", std::to_string(msfx_transparency_val)});
+  options.push_back({"transparency_invert", std::to_string(1.0f - msfx_transparency_val)});
   options.push_back({"blur", std::to_string(msfx_blur_val)});
-  options.push_back({"is_blur", msfx_blur_val != 0 && msfx_transparancy_val != 0.0f ? "enable" : "disable"});
+  options.push_back({"is_blur", msfx_blur_val != 0 && msfx_transparency_val != 0.0f ? "enable" : "disable"});
+  options.push_back({"is_blur_xray", msfx_blur_xray == true ? "enable" : "disable"});
   options.push_back({"is_shadow", msfx_shadow == false ? "disable" : "enable"});
   options.push_back({"corner_radius", std::to_string(msfx_corner_radius_val)});
 
@@ -253,7 +229,7 @@ int main(int argc, char *argv[]) {
      * */
     // std::string out_config_path(getenv("HOME"));
     // out_config_path += "/.config/" + configs[i];
-    std::string out_config_path = "./wconfig/" + configs[i];
+    std::string out_config_path = "./Tconfig/" + configs[i];
 
     std::ifstream input_file;
     std::ofstream output_file;

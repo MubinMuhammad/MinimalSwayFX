@@ -99,6 +99,13 @@ const std::string msfx_wallpaper = "#1d2021";
 const msfx_level msfx_gap = medium;
 
 /*
+ * The thickness of border around windows.
+ *
+ * Availabl options: [none, low, medium, high]
+ * */
+const msfx_level msfx_border = low;
+
+/*
  * The bar you would like to choose there
  * are two options "waybar" and "i3status".
  * If you choose either of them, you have
@@ -129,22 +136,31 @@ const msfx_position msfx_bar_pos = top;
 
 /////////////// ONLY FOR SWAYFX USERS ///////////////
 /*
- * The transparancy you would want for
+ * The transparency you would want for
  * windows that may use it.
  *
  * Available options: [none, low, medium, high]
  * */
-const msfx_level msfx_transparancy = medium;
+const msfx_level msfx_transparency = medium;
 
 /*
  * The level of blur for transparent
  * windows that may use it. blur will
- * only work if transparancy is NOT set
+ * only work if transparency is NOT set
  * to none.
  *
  * Available options: [none, low, medium, high]
  * */
 const msfx_level msfx_blur = medium;
+
+/*
+ * The option will turn on blur xray,
+ * which will show the blur relative to your
+ * wallpaper and not what's behind it.
+ *
+ * Available options: [true, false]
+ * */
+const bool msfx_blur_xray = false;
 
 /*
  * Enables a nice shadow for windows

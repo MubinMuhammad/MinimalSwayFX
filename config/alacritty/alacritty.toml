@@ -33,7 +33,7 @@ style = "bold"
 program = "/bin/fish"
 
 [window]
-opacity = msfxSet(transparancy_invert)
+opacity = msfxSet(transparency_invert)
 
 [window.padding]
 x = 20

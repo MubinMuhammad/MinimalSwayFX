@@ -1,43 +1,35 @@
-font pango:~WINDOW_MANAGER_FONT ~WINDOW_MANAGER_FONT_STYLE ~WINDOW_MANAGER_FONT_SIZE
+font pango:msfxSet(font) msfxSet(font_style) msfxSet(font_size)
 
-"msfxSet(window_manager)"
-msfxSet(if_swayfx)
-msfxSet(gap)
-msfxSet(bar_cmd)
-msfxSet(wallpaper)
-msfxSet(wallpaper_mode)
+output * msfxSet(wallpaper) msfxSet(wallpaper_mode)
 
-output * ~WALLPAPER ~WALLPAPER_MODE
+gaps inner msfxSet(gap)
+gaps outer msfxSet(gap)
 
-gaps inner ~WINDOW_GAP
-gaps outer ~WINDOW_GAP
-
-default_border pixel ~WINDOW_BORDER
-default_floating_border pixel ~WINDOW_BORDER
+default_border pixel msfxSet(border)
+default_floating_border pixel msfxSet(border)
 
 # swayfx
-~IF_SWAYFX blur ~IS_SWAYFX_BLUR
-~IF_SWAYFX blur_xray ~IS_SWAYFX_BLUR_XRAY
-~IF_SWAYFX blur_passes ~SWAYFX_BLUR
-~IF_SWAYFX blur_radius 5
-~IF_SWAYFX shadows ~IS_SWAYFX_SHADOW
-~IF_SWAYFX corner_radius ~SWAYFX_CORNER_RADIUS
-~IF_SWAYFX default_dim_inactive ~SWAYFX_INACTIVE_DIM
-~IF_SWAYFX layer_effects "~BAR_TYPE" ~BAR_SHADOW; ~BAR_CORNER_RADIUS; ~BAR_BLUR
+msfxSet(if_swayfx) blur msfxSet(is_blur)
+msfxSet(if_swayfx) blur_xray msfxSet(is_blur_xray)
+msfxSet(if_swayfx) blur_passes msfxSet(blur)
+msfxSet(if_swayfx) blur_radius 5
+msfxSet(if_swayfx) shadows msfxSet(is_shadow)
+msfxSet(if_swayfx) corner_radius msfxSet(corner_radius)
+msfxSet(if_swayfx) layer_effects "msfxSet(bar_layercmd)" shadows msfxSet(is_shadow); corner_radius msfxSet(corner_radius); blur msfxSet(is_blur)
 
 bar {
-  swaybar_command ~BAR_TYPE
+  swaybar_command msfxSet(bar_cmd)
 
-  ~IF_I3_STATUS status_command /usr/bin/i3status-rs $HOME/.config/sway/i3status_config.toml
-  ~IF_I3_STATUS position ~BAR_POSITION
-  ~IF_I3_STATUS gaps ~BAR_GAP
-  ~IF_I3_STATUS height ~BAR_HEIGHT
-  ~IF_I3_STATUS font pango:~WINDOW_MANAGER_FONT ~WINDOW_MANAGER_FONT_STYLE ~WINDOW_MANAGER_FONT_SIZE
-  ~IF_I3_STATUS colors {
-  ~IF_I3_STATUS   background ~COLOR_BG1\a ~HEX_ALPHA
-  ~IF_I3_STATUS   focused_workspace ~COLOR_ACCENT1\a ~HEX_ALPHA ~COLOR_ACCENT\a ~HEX_ALPHA ~COLOR_FG1\a ~HEX_ALPHA
-  ~IF_I3_STATUS   inactive_workspace ~COLOR_BG3\a ~HEX_ALPHA ~COLOR_BG2\a ~HEX_ALPHA ~COLOR_FG1\a ~HEX_ALPHA
-  ~IF_I3_STATUS }
+  msfxSet(if_swaybar) status_command /usr/bin/i3status-rs $HOME/.config/i3status/config.toml
+  msfxSet(if_swaybar) position msfxSet(bar_position)
+  msfxSet(if_swaybar) gaps msfxSet(bar_gap_top) msfxSet(bar_gap_right) msfxSet(bar_gap_bottom) msfxSet(bar_gap_left)
+  msfxSet(if_swaybar) height ~BAR_HEIGHT
+  msfxSet(if_swaybar) font pango:msfxSet(font) msfxSet(font_style) msfxSet(font_size)
+  msfxSet(if_swaybar) colors {
+  msfxSet(if_swaybar)   background msfxSet(color_bg1_a)
+  msfxSet(if_swaybar)   focused_workspace msfxSet(color_green2_a) msfxSet(color_green1_a) msfxSet(color_bg1_a)
+  msfxSet(if_swaybar)   inactive_workspace msfxSet(color_bg2_a) msfxSet(color_bg1_a) msfxSet(color_fg1_a)
+  msfxSet(if_swaybar) }
 }
 
 # variables
@@ -54,7 +46,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+d exec $menu
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes, exit Sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag -t warning -m "Exit Sway?" -B "Yes, exit Sway" "swaymsg exit" --font="msfxSet(font) msfxSet(font_style) msfxSet(font_size)"
 floating_modifier $mod normal
 
 # more bindings

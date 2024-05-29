@@ -1,0 +1,23 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "plain"
+[theme.overrides]
+separator = ""
+idle_bg = "#050505"
+idle_fg = "#e8dab2"
+good_bg = { link = "idle_bg" }
+
+[icons]
+icons = "material-nf"
+
+[[block]]
+block = "sound"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "time"
+interval = 60
+format = " $icon $timestamp.datetime(f:'%I:%M') "
