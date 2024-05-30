@@ -67,7 +67,7 @@ const std::string msfx_font_style = "bold";
  * normal arithmatic can be applied here.
  * but make sure to not put negative values.
  * */
-const unsigned int msfx_font_size = 14;
+const unsigned int msfx_font_size = 12;
 
 /*
  * The theme you want to use through-out
@@ -83,11 +83,14 @@ const std::vector<std::string> &msfx_theme = gruvbox_dark;
  * mentioned here. It can also be a hex
  * color with format #RRGGBB or any path
  * to a wallpaper you would like to use.
+ * 
+ * The wallpaper path is relative to
+ * "$HOME/.config/sway/"
  *
  * Available options: [#RRGGBB(for solid colors),
  *                     <path_to_wallpaper>]
  * */
-const std::string msfx_wallpaper = "#1d2021";
+const std::string msfx_wallpaper = "$HOME/Pictures/wallpaper2.jpg";
 
 /*
  * The gap between two or more windows.
@@ -96,7 +99,7 @@ const std::string msfx_wallpaper = "#1d2021";
  *
  * Available options: [none, low, medium, high]
  * */
-const msfx_level msfx_gap = medium;
+const msfx_level msfx_gap = low;
 
 /*
  * The thickness of border around windows.
@@ -141,7 +144,7 @@ const msfx_position msfx_bar_pos = top;
  *
  * Available options: [none, low, medium, high]
  * */
-const msfx_level msfx_transparency = medium;
+const msfx_level msfx_transparency = none;
 
 /*
  * The level of blur for transparent
@@ -151,7 +154,7 @@ const msfx_level msfx_transparency = medium;
  *
  * Available options: [none, low, medium, high]
  * */
-const msfx_level msfx_blur = medium;
+const msfx_level msfx_blur = none;
 
 /*
  * The option will turn on blur xray,

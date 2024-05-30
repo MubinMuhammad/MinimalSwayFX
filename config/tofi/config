@@ -10,5 +10,5 @@ prompt-padding=4
 selection-color=msfxSet(color_green1)
 selection-match-color=msfxSet(color_green1)
 corner-radius=msfxSet(corner_radius)
-width=400px
-height=600px
+width=500
+height=500

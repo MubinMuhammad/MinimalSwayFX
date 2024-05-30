@@ -1,12 +1,19 @@
 font pango:msfxSet(font) msfxSet(font_style) msfxSet(font_size)
 
-output * msfxSet(wallpaper) msfxSet(wallpaper_mode)
+output * bg msfxSet(wallpaper) msfxSet(wallpaper_mode)
 
 gaps inner msfxSet(gap)
 gaps outer msfxSet(gap)
 
 default_border pixel msfxSet(border)
 default_floating_border pixel msfxSet(border)
+
+# class                 border     backgr.   text      indicator   child_border
+client.focused          msfxSet(color_bg3)       msfxSet(color_bg3)   msfxSet(color_fg2)   msfxSet(color_bg3)       msfxSet(color_bg3)    
+client.focused_inactive msfxSet(color_bg3)       msfxSet(color_bg3)   msfxSet(color_fg2)   msfxSet(color_bg3)       msfxSet(color_bg3)    
+client.unfocused        msfxSet(color_bg1)       msfxSet(color_bg3)   msfxSet(color_fg2)   msfxSet(color_bg1)       msfxSet(color_bg1)    
+client.urgent           msfxSet(color_yellow1)   msfxSet(color_bg3)   msfxSet(color_bg2)   msfxSet(color_yellow1)   msfxSet(color_yellow1)
+client.placeholder      msfxSet(color_blue1)     msfxSet(color_bg3)   msfxSet(color_bg2)   msfxSet(color_blue1)     msfxSet(color_blue1)  
 
 # swayfx
 msfxSet(if_swayfx) blur msfxSet(is_blur)

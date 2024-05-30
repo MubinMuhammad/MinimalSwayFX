@@ -74,7 +74,9 @@ void formatWord(std::string &s, std::vector<std::pair<std::string, std::string>>
       << "\033[1;31minvalid option\033[0m" << " `" << option_name << "`:" << '\n'
       << "  |\n  | " << s << "\n  |         ";
 
-    for (int i = 0; i < option_name.size(); i++) std::cout << "~";
+    for (int i = 0; i < option_name.size(); i++) 
+      std::cout << "~";
+
     std::cout << '\n';
 
     std::cout << "\033[1;33mkeeping the word as is!\033[0m\n";
@@ -139,14 +141,15 @@ int main(int argc, char *argv[]) {
     {"tofi", "config"},
     {"mako", "config"},
     {"alacritty", "alacritty.toml"},
-    {"fish", "config.fish"}
+    {"fish", "config.fish"},
+    {"fish/functions", "fish_prompt.fish"}
   };
 
   int msfx_border_val = msfxLevelToVal(msfx_border, 2, 4, 8);
   int msfx_gap_val = msfxLevelToVal(msfx_gap, 4, 8, 12);
-  float msfx_transparency_val = msfxLevelToVal(msfx_transparency, 0.3f, 0.5f, 0.7f); 
+  float msfx_transparency_val = msfxLevelToVal(msfx_transparency, 0.1f, 0.3f, 0.5f); 
   int msfx_blur_val = msfxLevelToVal(msfx_blur, 3, 5, 7); 
-  int msfx_corner_radius_val = msfxLevelToVal(msfx_corner_radius, 4, 8, 16); 
+  int msfx_corner_radius_val = msfxLevelToVal(msfx_corner_radius, 4, 8, 16);
   std::string msfx_bar_pos_val = msfx_bar_pos == bottom ? "bottom" : "top";
 
   std::vector<std::pair<std::string, std::string>> options;
@@ -197,6 +200,7 @@ int main(int argc, char *argv[]) {
   options.push_back({"font", msfx_font});
   options.push_back({"font_style", msfx_font_style});
   options.push_back({"font_size", std::to_string(msfx_font_size)});
+  options.push_back({"waybar_font_size", std::to_string(msfx_font_size + 2)});
   options.push_back({"wallpaper", msfx_wallpaper});
   options.push_back({"wallpaper_mode", getWallpaperMode(msfx_wallpaper)});
   options.push_back({"border", std::to_string(msfx_border_val)});
@@ -219,16 +223,31 @@ int main(int argc, char *argv[]) {
   options.push_back({"corner_radius", std::to_string(msfx_corner_radius_val)});
 
   for (int i = 0; i < configs.size(); i++) {
-    std::string in_config_path = "config/" + configs[i].first + configs[i].second;
-
+    std::string in_config_path = "config/" + configs[i].first + "/" + configs[i].second;
     std::string out_config_path(getenv("HOME"));
+    out_config_path += "/.config/" + configs[i].first;
 
-    out_config_path += configs[i].first;
+    if (std::filesystem::is_directory(out_config_path)) {
+      tmp_str = configs[i].first;
+      bool f = 0;
 
-    if (!std::filesystem::is_directory(out_config_path))
+      for (int j = 0; j < configs.size(); j++) {
+        if (tmp_str == configs[j].first && i != j) {
+          f = 1;
+          break;
+        }
+      }
+
+      if (!f) {
+        std::filesystem::remove_all(out_config_path);
+        std::filesystem::create_directory(out_config_path);
+      }
+    }
+    else {
       std::filesystem::create_directory(out_config_path);
+    }
 
-    out_config_path += configs[i].second;
+    out_config_path += "/" + configs[i].second;
 
     std::ifstream input_file;
     std::ofstream output_file;

@@ -5,16 +5,16 @@
 #include <string>
 
 const std::vector<std::string> gruvbox_dark = {
-  "#1d2021",
+  "#141414",
   "#282828",
-  "#32302f",
-  "#3c3836",
-  "#e6d19e",
+  "#3d3d3d",
+  "#525252",
+  "#e3cc92",
   "#ebdbb2",
-  "#f2e5bc",
-  "#fbf1c7",
+  "#f3ead2",
+  "#fcf9f3",
   "#665c54",
-  "#7c6f64",
+  "#7b6f65",
   "#cc241d",
   "#fb4934",
   "#98971a",
@@ -29,6 +29,23 @@ const std::vector<std::string> gruvbox_dark = {
   "#8ec07c",
   "#b16286",
   "#d3869b"
+};
+
+const std::vector<std::string> gruvbox_material_dark = {
+  "#141617",
+  "#1d2021",
+  "#282828",
+  "#3c3836",
+  "#3c3836",
+  "#504945",
+  "#d4be98"
+  "#ddc7a1"
+  "#ea6962"
+  "#e78a4e"
+  "#d8a657"
+  "#a9b665"
+  "#89b482"
+  "#7daea3"
 };
 
 #endif

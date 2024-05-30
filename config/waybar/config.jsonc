@@ -2,10 +2,10 @@
   "layer": "top",
   "spacing": 0,
   "height": 0,
-  "margin-top": "msfxSet(bar_gap_top)",
-  "margin-right": "msfxSet(bar_gap_right)",
-  "margin-bottom": "msfxSet(bar_gap_bottom)",
-  "margin-left": "msfxSet(bar_gap_left)",
+  "margin-top": msfxSet(bar_gap_top),
+  "margin-right": msfxSet(bar_gap_right),
+  "margin-bottom": msfxSet(bar_gap_bottom),
+  "margin-left": msfxSet(bar_gap_left),
 
   "modules-left": [
     "sway/workspaces"
