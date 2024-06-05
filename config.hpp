@@ -74,9 +74,16 @@ const unsigned int msfx_font_size = 12;
  * you're system. It includes, terminal,
  * statusbar, app menu, etc.
  *
- * TODO: currently in implementation.
+ * Available options(for now): [
+ *   gruvbox_dark,
+ *   gruvbox_material_dark,
+ *   nord_dark,
+ *   everforest_dark,
+ *   everblush_dark,
+ *   rosepine_dark
+ * ]
  * */
-const std::vector<std::string> &msfx_theme = gruvbox_dark;
+const std::vector<std::string> &msfx_theme = gruvbox_material_dark;
 
 /*
  * The wallpaper you want to use can be

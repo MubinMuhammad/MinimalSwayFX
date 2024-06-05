@@ -154,8 +154,6 @@ int main(int argc, char *argv[]) {
 
   std::vector<std::pair<std::string, std::string>> options;
 
-  options.push_back({"window_manager", msfx_window_manager});
-
   std::vector<std::string> color_names = {
     "bg", "fg", "gray", "red", "green", "yellow",
     "orange", "blue", "aqua", "purple"
@@ -196,6 +194,7 @@ int main(int argc, char *argv[]) {
     }
   }
 
+  options.push_back({"window_manager", msfx_window_manager});
   options.push_back({"if_swayfx", msfx_window_manager == "swayfx" ? "" : "#"});
   options.push_back({"font", msfx_font});
   options.push_back({"font_style", msfx_font_style});

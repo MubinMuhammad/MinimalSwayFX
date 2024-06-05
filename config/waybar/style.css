@@ -33,13 +33,13 @@ window#waybar {
 #workspaces button {
   all: initial;
   min-width: 0;
-  box-shadow: inset 0 -3px transparent; /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
   padding: 4px 8px;
-  color: msfxSet(color_gray1);
+  color: msfxSet(color_fg1);
 }
 
 #workspaces button.focused {
-  color: msfxSet(color_fg3);
+  color: msfxSet(color_fg2);
 }
 
 #workspaces button.urgent {
@@ -55,7 +55,7 @@ window#waybar {
 #network {
   background-color: msfxSet(color_purple1);
   border: msfxSet(border)px solid msfxSet(color_purple2);
-  color: msfxSet(color_fg2);
+  color: msfxSet(color_bg2);
 }
 
 #clock {
