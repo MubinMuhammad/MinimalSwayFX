@@ -1,5 +1,5 @@
 <div align="center">
-![image header](https://github.com/MubinMuhammad/MinimalSwayFX/blob/develop/assets/header.png?raw=true)
+<img src="https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/develop/assets/header.png">
 
 **[<kbd> <br> Showcase <br> </kbd>][Showcase]**
 **[<kbd> <br> Issues <br> </kbd>][Issues]**
