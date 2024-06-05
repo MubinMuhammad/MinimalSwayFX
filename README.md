@@ -6,13 +6,11 @@
 [<kbd> <br> Pull Requests <br> </kbd>][Pull Requests]
 [<kbd> <br> Keybindings? <br> </kbd>][Keybindings]
 
-<br>
 [Showcase]: https://github.com/MubinMuhammad/MinimalSwayFX/#Showcase
 [Issues]: https://github.com/MubinMuhammad/MinimalSwayFX/issues
 [Installation]: https://github.com/MubinMuhammad/MinimalSwayFX/wiki/#Installation
 [Pull Requests]: https://github.com/MubinMuhammad/MinimalSwayFX/pulls
 [Keybindings]: https://github.com/MubinMuhammad/MinimalSwayFX/#Keybindings
-<br>
 
 ## Showcase
 ![image showcase 1](https://github.com/MubinMuhammad/MinimalSwayFX/blob/develop/assets/1.png?raw=true)
