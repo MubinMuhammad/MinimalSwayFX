@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/develop/assets/header.png">
+<img src="https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/header.png">
 
 **[<kbd> <br> Showcase <br> </kbd>][Showcase]**
 **[<kbd> <br> Issues <br> </kbd>][Issues]**
 **[<kbd> <br> Installation <br> </kbd>][Installation]**
 **[<kbd> <br> Pull Requests <br> </kbd>][Pull Requests]**
-**[<kbd> <br> Keybindings? <br> </kbd>][Keybindings]**
+**[<kbd> <br> Keybindings <br> </kbd>][Keybindings]**
 
 <br>
 
@@ -25,10 +25,10 @@ The customization options are balanced, offering neither too much nor too little
 </div>
 
 ## Showcase
-![image showcase 1](https://github.com/MubinMuhammad/MinimalSwayFX/blob/develop/assets/1.png?raw=true)
-![image showcase 2](https://github.com/MubinMuhammad/MinimalSwayFX/blob/develop/assets/2.png?raw=true)
-![image showcase 3](https://github.com/MubinMuhammad/MinimalSwayFX/blob/develop/assets/3.png?raw=true)
-![image showcase 4](https://github.com/MubinMuhammad/MinimalSwayFX/blob/develop/assets/4.png?raw=true)
+![image showcase 1](https://github.com/MubinMuhammad/MinimalSwayFX/blob/main/assets/1.png?raw=true)
+![image showcase 2](https://github.com/MubinMuhammad/MinimalSwayFX/blob/main/assets/2.png?raw=true)
+![image showcase 3](https://github.com/MubinMuhammad/MinimalSwayFX/blob/main/assets/3.png?raw=true)
+![image showcase 4](https://github.com/MubinMuhammad/MinimalSwayFX/blob/main/assets/4.png?raw=true)
 
 ## Common Keybindings
 Here are the Keybindings for MinimalSwayFX:
