@@ -97,7 +97,7 @@ const std::vector<std::string> &msfx_theme = gruvbox_material_dark;
  * Available options: [#RRGGBB(for solid colors),
  *                     <path_to_wallpaper>]
  * */
-const std::string msfx_wallpaper = "$HOME/Pictures/wallpaper2.jpg";
+const std::string msfx_wallpaper = "#9b9b7a";
 
 /*
  * The gap between two or more windows.
@@ -129,10 +129,9 @@ const msfx_level msfx_border = low;
  *
  * i3status: It doesn't look as fancy as waybar,
  *                but it's faster than waybar.
- *
  * 
  * */
-const std::string msfx_bar = "i3status";
+const std::string msfx_bar = "waybar";
 
 /*
  * the bar position for i3status or waybar.
