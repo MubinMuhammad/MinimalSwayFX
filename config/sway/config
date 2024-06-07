@@ -30,10 +30,10 @@ bar {
   msfxSet(if_swaybar) status_command /usr/bin/i3status-rs $HOME/.config/i3status/config.toml
   msfxSet(if_swaybar) position msfxSet(bar_position)
   msfxSet(if_swaybar) gaps msfxSet(bar_gap_top) msfxSet(bar_gap_right) msfxSet(bar_gap_bottom) msfxSet(bar_gap_left)
-  msfxSet(if_swaybar) height ~BAR_HEIGHT
+  msfxSet(if_swaybar) height msfxSet(swaybar_height)
   msfxSet(if_swaybar) font pango:msfxSet(font) msfxSet(font_style) msfxSet(font_size)
   msfxSet(if_swaybar) colors {
-  msfxSet(if_swaybar)   background msfxSet(color_bg1_a)
+  msfxSet(if_swaybar)   background msfxSet(color_bg2_a)
   msfxSet(if_swaybar)   focused_workspace msfxSet(color_green2_a) msfxSet(color_green1_a) msfxSet(color_bg1_a)
   msfxSet(if_swaybar)   inactive_workspace msfxSet(color_bg2_a) msfxSet(color_bg1_a) msfxSet(color_fg1_a)
   msfxSet(if_swaybar) }

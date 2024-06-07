@@ -35,8 +35,8 @@
 /////////////////DON'T EDIT/////////////////////
 #include <string>                  /////////////
 #include <vector>                  /////////////
-#include "installerSrc/utils.hpp"  /////////////
-#include "installerSrc/colors.hpp" /////////////
+#include "src/utils.hpp"           /////////////
+#include "src/colors.hpp"          /////////////
 ////////////////////////////////////////////////
 
 /*
@@ -132,7 +132,7 @@ const msfx_level msfx_border = low;
  *
  * 
  * */
-const std::string msfx_bar = "waybar";
+const std::string msfx_bar = "i3status";
 
 /*
  * the bar position for i3status or waybar.

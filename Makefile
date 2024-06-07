@@ -1,5 +1,5 @@
 COMPILER := g++
-FILES := ./installerSrc/main.cpp
+FILES := ./src/main.cpp
 EXE := installer
 
 compile:

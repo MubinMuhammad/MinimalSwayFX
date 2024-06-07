@@ -9,7 +9,6 @@ good_bg = "msfxSet(color_green1)"
 
 [icons]
 icons = "material-nf"
-icons_format = "{icon}"
 
 [[block]]
 block = "sound"

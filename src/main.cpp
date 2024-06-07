@@ -205,7 +205,7 @@ int main(int argc, char *argv[]) {
   options.push_back({"border", std::to_string(msfx_border_val)});
   options.push_back({"gap", std::to_string(msfx_gap_val)});
   options.push_back({"if_swaybar", msfx_bar == "i3status" ? "" : "#"});
-  options.push_back({"swaybar_height", std::to_string(msfx_font_size + 8)});
+  options.push_back({"swaybar_height", std::to_string(msfx_font_size + 20)});
   options.push_back({"bar_gap_right", msfx_bar_pos_val == "left" ? "0" : std::to_string(msfx_gap_val * 2)});
   options.push_back({"bar_gap_left", msfx_bar_pos_val == "right" ? "0" : std::to_string(msfx_gap_val * 2)});
   options.push_back({"bar_gap_top", msfx_bar_pos_val == "bottom" ? "0" : std::to_string(msfx_gap_val * 2)});
