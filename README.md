@@ -25,10 +25,10 @@ The customization options are balanced, offering neither too much nor too little
 </div>
 
 ## Showcase
-![image showcase 1](https://github.com/MubinMuhammad/MinimalSwayFX/blob/main/assets/1.png?raw=true)
-![image showcase 2](https://github.com/MubinMuhammad/MinimalSwayFX/blob/main/assets/2.png?raw=true)
-![image showcase 3](https://github.com/MubinMuhammad/MinimalSwayFX/blob/main/assets/3.png?raw=true)
-![image showcase 4](https://github.com/MubinMuhammad/MinimalSwayFX/blob/main/assets/4.png?raw=true)
+![image showcase 1](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/1.png)
+![image showcase 2](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/2.png)
+![image showcase 3](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/5.png)
+![image showcase 4](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/4.png)
 
 ## Common Keybindings
 Here are the Keybindings for MinimalSwayFX:
