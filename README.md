@@ -27,7 +27,7 @@ The customization options are balanced, offering neither too much nor too little
 ## Showcase
 ![image showcase 1](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/1.png)
 ![image showcase 2](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/2.png)
-![image showcase 3](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/3.png)
+![image showcase 3](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/5.png)
 ![image showcase 4](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/4.png)
 
 ## Common Keybindings
