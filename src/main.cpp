@@ -142,6 +142,7 @@ int main(int argc, char *argv[]) {
     {"mako", "config"},
     {"alacritty", "alacritty.toml"},
     {"fish", "config.fish"},
+    {"fish", "ascii.sh"},
     {"fish/functions", "fish_prompt.fish"}
   };
 
