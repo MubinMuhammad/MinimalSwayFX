@@ -17,7 +17,7 @@ The customization options are balanced, offering neither too much nor too little
 <br>
 
 [Showcase]: https://github.com/MubinMuhammad/MinimalSwayFX/?tab=readme-ov-file#Showcase
-[Keybindings]: https://github.com/MubinMuhammad/MinimalSwayFX/?tab=readme-ov-file#Common%20Keybindings
+[Keybindings]: https://github.com/MubinMuhammad/MinimalSwayFX/?tab=readme-ov-file#CommonKeybindings
 [Installation]: https://github.com/MubinMuhammad/MinimalSwayFX/wiki/Installation
 [Issues]: https://github.com/MubinMuhammad/MinimalSwayFX/issues
 [Pull Requests]: https://github.com/MubinMuhammad/MinimalSwayFX/pulls
@@ -30,7 +30,7 @@ The customization options are balanced, offering neither too much nor too little
 ![image showcase 3](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/3.png)
 ![image showcase 4](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/4.png)
 
-## Common Keybindings
+## CommonKeybindings
 Here are the Keybindings for MinimalSwayFX:
 |Keybindings|Desription|
 |---|---|
