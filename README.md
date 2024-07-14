@@ -17,7 +17,7 @@ The customization options are balanced, offering neither too much nor too little
 <br>
 
 [Showcase]: https://github.com/MubinMuhammad/MinimalSwayFX/#Showcase
-[Keybindings]: https://github.com/MubinMuhammad/MinimalSwayFX/#Keybindings
+[Keybindings]: https://github.com/MubinMuhammad/MinimalSwayFX/#Common%20Keybindings
 [Installation]: https://github.com/MubinMuhammad/MinimalSwayFX/wiki/Installation
 [Issues]: https://github.com/MubinMuhammad/MinimalSwayFX/issues
 [Pull Requests]: https://github.com/MubinMuhammad/MinimalSwayFX/pulls
