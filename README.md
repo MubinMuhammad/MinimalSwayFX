@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/develop/assets/header.png">
+<img src="https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/header.png">
 
 **[<kbd> <br> Showcase <br> </kbd>][Showcase]**
 **[<kbd> <br> Issues <br> </kbd>][Issues]**
 **[<kbd> <br> Installation <br> </kbd>][Installation]**
 **[<kbd> <br> Pull Requests <br> </kbd>][Pull Requests]**
-**[<kbd> <br> Keybindings? <br> </kbd>][Keybindings]**
+**[<kbd> <br> Keybindings <br> </kbd>][Keybindings]**
 
 <br>
 
@@ -16,8 +16,8 @@ The customization options are balanced, offering neither too much nor too little
 
 <br>
 
-[Showcase]: https://github.com/MubinMuhammad/MinimalSwayFX/#Showcase
-[Keybindings]: https://github.com/MubinMuhammad/MinimalSwayFX/#Keybindings
+[Showcase]: https://github.com/MubinMuhammad/MinimalSwayFX/?tab=readme-ov-file#Showcase
+[Keybindings]: https://github.com/MubinMuhammad/MinimalSwayFX/?tab=readme-ov-file#CommonKeybindings
 [Installation]: https://github.com/MubinMuhammad/MinimalSwayFX/wiki/Installation
 [Issues]: https://github.com/MubinMuhammad/MinimalSwayFX/issues
 [Pull Requests]: https://github.com/MubinMuhammad/MinimalSwayFX/pulls
@@ -25,12 +25,12 @@ The customization options are balanced, offering neither too much nor too little
 </div>
 
 ## Showcase
-![image showcase 1](https://github.com/MubinMuhammad/MinimalSwayFX/blob/develop/assets/1.png?raw=true)
-![image showcase 2](https://github.com/MubinMuhammad/MinimalSwayFX/blob/develop/assets/2.png?raw=true)
-![image showcase 3](https://github.com/MubinMuhammad/MinimalSwayFX/blob/develop/assets/3.png?raw=true)
-![image showcase 4](https://github.com/MubinMuhammad/MinimalSwayFX/blob/develop/assets/4.png?raw=true)
+![image showcase 1](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/1.png)
+![image showcase 2](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/2.png)
+![image showcase 3](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/3.png)
+![image showcase 4](https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/4.png)
 
-## Common Keybindings
+## CommonKeybindings
 Here are the Keybindings for MinimalSwayFX:
 |Keybindings|Desription|
 |---|---|
@@ -41,7 +41,7 @@ Here are the Keybindings for MinimalSwayFX:
 |`Win+Shift+e`|Bring Sway close menu|
 |`Win+Shift+v`|Toggle between floating & tiling mode|
 |`Win+Shift+<i,j,k,l>`|Move window in floating mode|
-|`Win+Shift+r`|Toggle between normal & resizable mode|
+|`Win+r`|Switch resizable mode & `esc` to go back to normal mode|
 
 ## Installation
 checkout the [installtion wiki](https://github.com/MubinMuhammad/MinimalSwayFX/wiki/Installation) for more information.

@@ -4,4 +4,5 @@ end
 function fish_greeting
 end
 
-alias ls="eza -l --git --color=always --icons=always --sort=extension --no-user --no-time --no-filesize --no-permissions"
+alias ls="eza -l --git --color=always --icons=never --sort=extension --no-user --no-permissions"
+alias ascii="bash $HOME/.config/fish/ascii.sh"

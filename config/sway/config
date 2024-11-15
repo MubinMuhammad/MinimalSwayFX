@@ -5,8 +5,8 @@ output * bg msfxSet(wallpaper) msfxSet(wallpaper_mode)
 gaps inner msfxSet(gap)
 gaps outer msfxSet(gap)
 
-default_border pixel msfxSet(border)
-default_floating_border pixel msfxSet(border)
+msfxSet(if_title_bar) default_border pixel msfxSet(border)
+msfxSet(if_title_bar) default_floating_border pixel msfxSet(border)
 
 # class                 border     backgr.   text      indicator   child_border
 client.focused          msfxSet(color_bg3)       msfxSet(color_bg3)   msfxSet(color_fg2)   msfxSet(color_bg3)       msfxSet(color_bg3)    

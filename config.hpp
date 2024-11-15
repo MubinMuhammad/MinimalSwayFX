@@ -50,6 +50,12 @@
 const std::string msfx_window_manager = "swayfx";
 
 /*
+ * The option that allows users to
+ * have a title bar above each window.
+ * */
+const bool msfx_title_bar = false;
+
+/*
  * the name of font that should be used
  * through out the system. Better to
  * choose a nerd font.

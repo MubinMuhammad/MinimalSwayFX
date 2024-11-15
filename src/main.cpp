@@ -142,6 +142,7 @@ int main(int argc, char *argv[]) {
     {"mako", "config"},
     {"alacritty", "alacritty.toml"},
     {"fish", "config.fish"},
+    {"fish", "ascii.sh"},
     {"fish/functions", "fish_prompt.fish"}
   };
 
@@ -196,6 +197,7 @@ int main(int argc, char *argv[]) {
 
   options.push_back({"window_manager", msfx_window_manager});
   options.push_back({"if_swayfx", msfx_window_manager == "swayfx" ? "" : "#"});
+  options.push_back({"if_title_bar", msfx_title_bar ? "#" : ""});
   options.push_back({"font", msfx_font});
   options.push_back({"font_style", msfx_font_style});
   options.push_back({"font_size", std::to_string(msfx_font_size)});
