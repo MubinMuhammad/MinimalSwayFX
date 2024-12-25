@@ -33,7 +33,7 @@ style = "Medium"
 program = "/bin/fish"
 
 [window]
-opacity = 1
+opacity = 1.000000
 
 [window.padding]
 x = 20

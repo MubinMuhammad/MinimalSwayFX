@@ -1,6 +1,6 @@
 font pango:iosevka nerd font regular 12
 
-output * bg $HOME/Pictures/mountain_house.jpg fill
+output * bg #928374 solid_color
 
 gaps inner 4
 gaps outer 4
@@ -10,7 +10,7 @@ default_border pixel 2
 default_floating_border pixel 2
 
 # class					 border  backgr. text    indicator child_border
-client.focused           #7c6f64 #7c6f64 #1d2021 #7c6f64   #7c6f64
+client.focused           #3c3836 #7c6f64 #1d2021 #3c3836   #3c3836
 client.focused_inactive  #282828 #282828 #ddc7a1 #282828   #282828
 client.unfocused		 #282828 #282828 #ddc7a1 #282828   #282828
 client.urgent			 #d8a657 #d8a657 #1d2021 #d8a657   #d8a657
@@ -29,9 +29,6 @@ client.placeholder		 #7daea3 #7daea3 #1d2021 #7daea3   #7daea3
 bar {
 	swaybar_command waybar
 }
-
-# execs
-exec mako
 
 # variables
 set $mod Mod4

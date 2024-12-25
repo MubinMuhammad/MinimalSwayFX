@@ -10,13 +10,20 @@
 
 window#waybar {
     background: #1d2021;
+    border: 2px solid #3c3836;
+}
+
+tooltip {
+    background-color: #1d2021;
     border: 2px solid #7c6f64;
 }
 
-#battery,
-#network,
 #clock,
 #tray,
+#cpu,
+#memory,
+#battery,
+#network,
 #pulseaudio {
     margin: 4px;
     padding: 4px 8px;
@@ -46,18 +53,6 @@ window#waybar {
     background-color: #e78a4e;
 }
 
-#battery {
-    background-color: #a9b665;
-    border: 2px solid #c7ab7a;
-    color: #6c782e;
-}
-
-#network {
-    background-color: #d4be98;
-    border: 2px solid #c7ab7a;
-    color: #1d2021;
-}
-
 #clock {
     background-color: #303536;
     border: 2px solid #434a4c;
@@ -70,6 +65,15 @@ window#waybar {
     color: #1d2021;
 }
 
+#battery {
+    background-color: #a9b665;
+    border: 2px solid #c7ab7a;
+    color: #6c782e;
+}
+
+#cpu,
+#memory,
+#network,
 #pulseaudio {
     background-color: #d4be98;
     border: 2px solid #c7ab7a;
