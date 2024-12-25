@@ -146,12 +146,11 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = { tab = '  ', trail = '·', nbsp = '␣' }
 
 -- changes the size of the tabs
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.opt.expandtab = true
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -734,16 +733,17 @@ require('lazy').setup({
               typedef unsigned long long int u64;
               typedef float f32;
               typedef double f64;
+              typedef size_t usize;
 
               void solve(u32 t) {{
-                {}
+                  {}
               }}
 
               i32 main() {{
-                u32 t; cin >> t;
-                while (t--) solve(t);
+                  u32 t; cin >> t;
+                  while (t--) solve(t);
 
-                return 0;
+                  return 0;
               }}
               ]],
               { lsnpI(0) }
@@ -767,11 +767,12 @@ require('lazy').setup({
               typedef unsigned long long int u64;
               typedef float f32;
               typedef double f64;
+              typedef size_t usize;
 
               i32 main() {{
-                {}
+                  {}
 
-                return 0;
+                  return 0;
               }}
               ]],
               { lsnpI(0) }
@@ -929,7 +930,6 @@ require('lazy').setup({
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
-      auto_install = true,
       highlight = {
         enable = true,
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.

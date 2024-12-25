@@ -1,0 +1,14 @@
+font=iosevka nerd font medium
+font-size=12
+background-color=#1d2021
+outline-width=0
+border-width=2
+border-color=#7c6f64
+text-color=#a89984
+prompt-text="App: "
+prompt-padding=4
+selection-color=#d4be98
+selection-match-color=#d4be98
+corner-radius=0
+width=400
+height=500
