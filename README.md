@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/header.png">
+<img src="https://raw.githubusercontent.com/MubinMuhammad/MinimalSwayFX/main/assets/thumbnail.png">
 
 **[<kbd> <br> Showcase <br> </kbd>][Showcase]**
 **[<kbd> <br> Issues <br> </kbd>][Issues]**
