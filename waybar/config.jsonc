@@ -18,6 +18,7 @@
 
     "modules-right": [
         "tray",
+        "cpu_text",
         "cpu",
         "memory",
         "battery",
@@ -42,11 +43,21 @@
     },
 
     "cpu": {
-        "format": "cpu {usage}%"
+        "format": "cpu {usage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 90
+        }
     },
 
     "memory": {
-        "format": "mem {percentage}%"
+        "format": "mem {percentage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 80
+        }
     },
 
     "battery": {
